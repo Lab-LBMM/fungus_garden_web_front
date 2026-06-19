@@ -1,29 +1,73 @@
-# fungus_garden_web_front
+# React + TypeScript + Vite
 
-# Documentação do Repositório - Frontend (React)
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Stack Tecnológica Utilizada
+Currently, two official plugins are available:
 
-* **Biblioteca Principal:** React
-* **Ferramenta de Build e Servidor Local:** Vite
-* **Linguagem de Programação:** TypeScript
-* **Cliente HTTP:** Axios
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
----
+## React Compiler
 
-## Justificativa de Arquitetura e Vantagens Técnicas
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-A seleção das tecnologias que compõem a interface fundamentou-se nos critérios de desempenho de execução, segurança em tempo de desenvolvimento (type-safety) e eficiência na manutenção do código.
+## Expanding the ESLint configuration
 
-### Critérios de Escolha e Benefícios
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-* **Otimização do Ambiente com Vite:** Em substituição a ferramentas tradicionais de empacotamento, o Vite foi implementado para garantir tempos reduzidos de inicialização do servidor local e atualizações em tempo real (Hot Module Replacement) altamente eficientes, baseadas em ES Modules nativos.
-* **Prevenção de Falhas com TypeScript:** A adição de tipagem estática ao ecossistema React introduz uma camada rigorosa de validação de dados em tempo de compilação. Erros de sintaxe, ausência de propriedades em componentes ou incongruências nos tipos de dados recebidos são identificados diretamente na IDE, reduzindo drasticamente a incidência de falhas em ambiente de produção.
-* **Modularidade e Reutilização do React:** A arquitetura baseada em componentes do React favorece a manutenibilidade do código. A separação em componentes isolados e especializados assegura que a interface gráfica possa escalar de forma organizada e previsível.
-* **Gerenciamento de Requisições com Axios:** O Axios estende as capacidades do mecanismo fetch nativo do navegador. Sua implementação justifica-se pelo suporte robusto a Interceptors (configurados para a injeção automatizada de tokens de autenticação nos cabeçalhos de requisições autenticadas) e por um sistema padronizado de tratamento de exceções HTTP.
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
----
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-## Integração e Contratos de Dados
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
 
-A consistência na comunicação com serviços externos é assegurada por meio de interfaces declaradas em TypeScript. Essas interfaces funcionam como um contrato rígido de integração: qualquer alteração na estrutura esperada dos dados (JSON) pelo provedor de serviços reflete-se imediatamente como uma inconsistência no código de frontend durante o desenvolvimento. Essa abordagem permite a detecção precoce de incompatibilidades antes que o código seja submetido ao processo de deploy.
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```

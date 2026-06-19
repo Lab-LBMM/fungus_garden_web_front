@@ -1,0 +1,125 @@
+.organism-card {
+  background: white;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--gray-200);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.organism-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.organism-card__img-wrap {
+  position: relative;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.organism-card__badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  z-index: 1;
+}
+
+.organism-card__badge--bacteria {
+  background: #d4edda;
+  color: #155724;
+}
+
+.organism-card__badge--fungi {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.organism-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease, opacity var(--transition);
+}
+
+.organism-card:hover .organism-card__img {
+  transform: scale(1.05);
+}
+
+.organism-card__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--green-primary);
+}
+
+.organism-card__body {
+  padding: 16px;
+}
+
+.organism-card__name {
+  font-style: italic;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.organism-card__common {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.organism-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 12px;
+}
+
+.organism-card__tag {
+  background: var(--green-light);
+  color: var(--green-primary);
+  font-size: 0.68rem;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+
+.organism-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  border-top: 1px solid var(--gray-100);
+}
+
+.organism-card__taxonomy {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.organism-card__detail-btn {
+  background: transparent;
+  color: var(--green-primary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 0;
+  border: none;
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.organism-card__detail-btn:hover {
+  color: var(--green-accent);
+}

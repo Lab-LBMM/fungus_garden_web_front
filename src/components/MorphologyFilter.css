@@ -1,0 +1,112 @@
+.morphology {
+  padding: 64px 24px;
+  background: var(--off-white);
+}
+
+.morphology__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.morphology__header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.morphology__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.morphology__sub {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.morphology__grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+}
+
+.morphology__card {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 1/1.1;
+  background: var(--gray-200);
+  border: none;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.morphology__card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.morphology__card-img-wrap {
+  position: absolute;
+  inset: 0;
+}
+
+.morphology__card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.morphology__card:hover .morphology__card-img {
+  transform: scale(1.06);
+}
+
+.morphology__card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15,50,30,0.85) 0%, rgba(15,50,30,0.1) 60%);
+}
+
+.morphology__card-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 10px 12px;
+  text-align: center;
+  z-index: 1;
+}
+
+.morphology__card-name {
+  display: block;
+  color: white;
+  font-weight: 600;
+  font-size: 0.82rem;
+  line-height: 1.3;
+}
+
+.morphology__card-count {
+  display: block;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.7rem;
+  margin-top: 2px;
+}
+
+@media (max-width: 900px) {
+  .morphology__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .morphology {
+    padding: 48px 20px;
+  }
+  .morphology__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
