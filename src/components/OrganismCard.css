@@ -41,6 +41,11 @@
   color: #856404;
 }
 
+.organism-card__badge--formiga {
+  background: #f5d6cb;
+  color: #6a3825;
+}
+
 .organism-card__img {
   width: 100%;
   height: 100%;

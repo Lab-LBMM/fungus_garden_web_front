@@ -24,7 +24,7 @@ export interface Organism {
   id: number;
   name: string;
   commonName: string;
-  type: 'Bacteria' | 'Fungi';
+  type: 'Bacteria' | 'Fungi' | 'Formiga';
   morphology: string;
   gramStain?: string;
   motility?: string;

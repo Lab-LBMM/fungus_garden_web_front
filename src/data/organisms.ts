@@ -1,12 +1,13 @@
 import type { Organism, MorphologyCategory, Stat } from '../types';
 
 export const stats: Stat[] = [
-  { label: 'Organismos Catalogados', value: '16', icon: '🦠' },
+  { label: 'Organismos Catalogados', value: '18', icon: '🦠' },
   { label: 'Fungos', value: '8', icon: '🍄' },
   { label: 'Bactérias', value: '8', icon: '🔬' },
-  { label: 'Genomas Sequenciados', value: '16', icon: '🧬' },
-  { label: 'Tamanho Médio do Genoma', value: '18.6 Mb', icon: '📊' },
-  { label: 'Referências Científicas', value: '32', icon: '📚' },
+  { label: 'Formigas', value: '2', icon: '🐜' },
+  { label: 'Genomas Sequenciados', value: '18', icon: '🧬' },
+  { label: 'Tamanho Médio do Genoma', value: '50.1 Mb', icon: '📊' },
+  { label: 'Referências Científicas', value: '36', icon: '📚' },
 ];
 
 export const morphologyCategories: MorphologyCategory[] = [
@@ -16,6 +17,7 @@ export const morphologyCategories: MorphologyCategory[] = [
   { name: 'Leveduriformes', count: 3, imageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=300&q=80' },
   { name: 'Cogumelos', count: 1, imageUrl: 'https://images.unsplash.com/photo-1504279807002-09854ccc9b6c?w=300&q=80' },
   { name: 'Dimórficos', count: 1, imageUrl: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=300&q=80' },
+  { name: 'Cortadeira', count: 2, imageUrl: 'https://images.unsplash.com/photo-1603123853880-a92fafb7809f?w=300&q=80' },
 ];
 
 export const organisms: Organism[] = [
@@ -360,6 +362,46 @@ export const organisms: Organism[] = [
       taxonomyInfo: { reino: 'Fungi', filo: 'Ascomycota', classe: 'Sordariomycetes', ordem: 'Hypocreales', familia: 'Hypocreaceae', genero: 'Trichoderma', especie: 'reesei' },
       references: ['Martinez et al. (2008) Nat Biotechnol 26:553-560', 'Schuster & Schmoll (2010) Appl Microbiol Biotechnol 87:787-799'],
       genbankAccession: 'NC_012550',
+    },
+  },
+  {
+    id: 17,
+    name: 'Atta sexdens',
+    commonName: 'Saúva-limão',
+    type: 'Formiga',
+    morphology: 'Cortadeira',
+    taxonomy: 'Formicidae',
+    tags: ['Cortadeira', 'Social', 'Jardineira de Fungo'],
+    color: '#f5d6cb',
+    detail: {
+      genomeSize: 295.0,
+      gcContent: 39.5,
+      geneCount: 19124,
+      description: 'Espécie de formiga cortadeira que cultiva o fungo Leucoagaricus gongylophorus em seus ninhos subterrâneos (jardins de fungos). Utiliza folhas frescas como substrato para o crescimento do fungo, que serve de alimento para a colônia.',
+      habitat: 'Ninhos subterrâneos em florestas e áreas agrícolas',
+      taxonomyInfo: { reino: 'Formiga', filo: 'Arthropoda', classe: 'Insecta', ordem: 'Hymenoptera', familia: 'Formicidae', genero: 'Atta', especie: 'sexdens' },
+      references: ['Suen et al. (2011) PLoS Genetics 7(9): e1002307', 'Montoya-Lerma et al. (2012) Journal of Pest Science 85:1-25'],
+      genbankAccession: 'GCA_000225165',
+    },
+  },
+  {
+    id: 18,
+    name: 'Acromyrmex octospinosus',
+    commonName: 'Formiga-cortadeira-de-oito-espinhos',
+    type: 'Formiga',
+    morphology: 'Cortadeira',
+    taxonomy: 'Formicidae',
+    tags: ['Cortadeira', 'Cultivadora de Fungos', 'Simbiose'],
+    color: '#ebd4cb',
+    detail: {
+      genomeSize: 310.0,
+      gcContent: 38.2,
+      geneCount: 17200,
+      description: 'Formiga cortadeira neotropical que possui uma relação simbiótica obrigatória com fungos basidiomecetos. Carrega bactérias do gênero Pseudonocardia em sua cutícula para produzir antibióticos que protegem seu jardim de fungos contra parasitas.',
+      habitat: 'Solo de florestas tropicais e áreas cultivadas',
+      taxonomyInfo: { reino: 'Formiga', filo: 'Arthropoda', classe: 'Insecta', ordem: 'Hymenoptera', familia: 'Formicidae', genero: 'Acromyrmex', especie: 'octospinosus' },
+      references: ['Nygaard et al. (2011) Genome Research 21:1239-1248', 'Currie et al. (1999) PNAS 96:7998-8002'],
+      genbankAccession: 'GCA_000204515',
     },
   },
 ];

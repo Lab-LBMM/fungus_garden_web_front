@@ -37,6 +37,7 @@ const Footer = ({ onNavigate }: Props) => {
             <h4 className="footer__col-title">Taxonomia</h4>
             <button onClick={() => onNavigate('buscar')}>Bactéria</button>
             <button onClick={() => onNavigate('buscar')}>Fungi</button>
+            <button onClick={() => onNavigate('buscar')}>Formiga</button>
             <button onClick={() => onNavigate('buscar')}>Filos</button>
           </div>
 

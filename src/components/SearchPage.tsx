@@ -4,7 +4,7 @@ import { organisms } from '../data/organisms';
 import OrganismCard from './OrganismCard';
 import './SearchPage.css';
 
-const MORPHOLOGY_FILTERS = ['Bastonetes', 'Cocos', 'Filamentosos', 'Leveduriformes', 'Cogumelos', 'Dimórficos'];
+const MORPHOLOGY_FILTERS = ['Bastonetes', 'Cocos', 'Filamentosos', 'Leveduriformes', 'Cogumelos', 'Dimórficos', 'Cortadeiras'];
 const MORPHOLOGY_MAP: Record<string, string[]> = {
   Bastonetes: ['Bastonete'],
   Cocos: ['Cocos'],
@@ -12,6 +12,7 @@ const MORPHOLOGY_MAP: Record<string, string[]> = {
   Leveduriformes: ['Leveduriforme'],
   Cogumelos: ['Cogumelo'],
   Dimórficos: ['Dimórfico'],
+  Cortadeiras: ['Cortadeira'],
 };
 
 interface Props {
@@ -21,7 +22,7 @@ interface Props {
 const SearchPage = ({ onViewDetail }: Props) => {
   const [query, setQuery] = useState('');
   const [searchInDesc, setSearchInDesc] = useState(false);
-  const [reino, setReino] = useState<'Todos' | 'Bacteria' | 'Fungi'>('Todos');
+  const [reino, setReino] = useState<'Todos' | 'Bacteria' | 'Fungi' | 'Formiga'>('Todos');
   const [morphFilter, setMorphFilter] = useState<string | null>(null);
 
   const results = useMemo(() => {
@@ -72,7 +73,7 @@ const SearchPage = ({ onViewDetail }: Props) => {
         <div className="search-page__filters">
           <div className="search-page__filter-group">
             <span className="search-page__filter-label">Reino:</span>
-            {(['Todos', 'Bacteria', 'Fungi'] as const).map((r) => (
+            {(['Todos', 'Bacteria', 'Fungi', 'Formiga'] as const).map((r) => (
               <button
                 key={r}
                 className={`search-page__filter-pill ${reino === r ? 'search-page__filter-pill--active' : ''}`}
