@@ -72,7 +72,7 @@ const SearchPage = ({ onViewDetail }: Props) => {
 
         <div className="search-page__filters">
           <div className="search-page__filter-group">
-            <span className="search-page__filter-label">Reino:</span>
+            <span className="search-page__filter-label">Organismo:</span>
             {(['Todos', 'Bacteria', 'Fungi', 'Formiga'] as const).map((r) => (
               <button
                 key={r}

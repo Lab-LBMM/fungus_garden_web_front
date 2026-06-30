@@ -81,7 +81,7 @@ const DetailPage = () => {
                   <div className="detail__taxonomy-row" key={key}>
                     <span className="detail__taxonomy-icon">{taxonomyIcons[key] ?? <Circle size={15} />}</span>
                     <div>
-                      <span className="detail__taxonomy-key">{key.charAt(0).toUpperCase() + key.slice(1)}</span>
+                      <span className="detail__taxonomy-key">{key === 'reino' ? 'Organismo' : key.charAt(0).toUpperCase() + key.slice(1)}</span>
                       <span className="detail__taxonomy-val">{value}</span>
                     </div>
                     <span className="detail__taxonomy-chevron">›</span>
@@ -165,7 +165,7 @@ const DetailPage = () => {
 
             <div className="detail__card">
               <h3 className="detail__card-title"><Activity size={16} />Tamanho do Genoma (Mb)</h3>
-              <p className="detail__card-sub">Comparação com outros organismos do mesmo reino</p>
+              <p className="detail__card-sub">Comparação com outros organismos do mesmo tipo</p>
               <div className="detail__chart">
                 {peers.map((peer) => (
                   <div className="detail__chart-row" key={peer.id}>
@@ -186,7 +186,7 @@ const DetailPage = () => {
 
             <div className="detail__card">
               <h3 className="detail__card-title"><Hash size={16} />Número de Genes</h3>
-              <p className="detail__card-sub">Comparação da contagem de genes com outros organismos do mesmo reino</p>
+              <p className="detail__card-sub">Comparação da contagem de genes com outros organismos do mesmo tipo</p>
               <div className="detail__chart">
                 {peersByGenes.map((peer) => (
                   <div className="detail__chart-row" key={peer.id}>
