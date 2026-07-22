@@ -1,16 +1,19 @@
-import { ArrowLeft, Dna, Activity, Hash, MapPin, BookOpen, ExternalLink, Globe, Microscope, List, Users, Search, Bug, Circle } from 'lucide-react';
+import { ArrowLeft, Dna, Activity, Hash, MapPin, BookOpen, ExternalLink, Globe, Microscope, List, Users, Search, Bug, Circle, Shield, Folder, Database } from 'lucide-react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { organisms } from '../data/organisms';
 import './DetailPage.css';
 
 const taxonomyIcons: Record<string, React.ReactElement> = {
-  reino:   <Globe size={15} />,
-  filo:    <Dna size={15} />,
-  classe:  <Microscope size={15} />,
-  ordem:   <List size={15} />,
-  familia: <Users size={15} />,
-  genero:  <Search size={15} />,
-  especie: <Bug size={15} />,
+  reino:         <Globe size={15} />,
+  filo:          <Dna size={15} />,
+  classe:        <Microscope size={15} />,
+  ordem:         <List size={15} />,
+  superfamilia:  <Shield size={15} />,
+  familia:       <Users size={15} />,
+  subfamilia:    <Folder size={15} />,
+  genero:        <Search size={15} />,
+  especie:       <Bug size={15} />,
+  acessoGenbank: <Database size={15} />,
 };
 
 const DetailPage = () => {
@@ -77,16 +80,30 @@ const DetailPage = () => {
             <div className="detail__card">
               <h3 className="detail__card-title"><Dna size={16} />Taxonomia</h3>
               <div className="detail__taxonomy-list">
-                {Object.entries(tax).map(([key, value]) => (
-                  <div className="detail__taxonomy-row" key={key}>
-                    <span className="detail__taxonomy-icon">{taxonomyIcons[key] ?? <Circle size={15} />}</span>
-                    <div>
-                      <span className="detail__taxonomy-key">{key === 'reino' ? 'Organismo' : key.charAt(0).toUpperCase() + key.slice(1)}</span>
-                      <span className="detail__taxonomy-val">{value}</span>
+                {Object.entries(tax).map(([key, value]) => {
+                  const label =
+                    key === 'reino'
+                      ? 'Reino'
+                      : key === 'acessoGenbank'
+                      ? 'Acesso GenBank'
+                      : key === 'superfamilia'
+                      ? 'Superfamília'
+                      : key === 'subfamilia'
+                      ? 'Subfamília'
+                      : key.charAt(0).toUpperCase() + key.slice(1);
+                  return (
+                    <div className="detail__taxonomy-row" key={key}>
+                      <span className="detail__taxonomy-icon">
+                        {taxonomyIcons[key] ?? <Circle size={15} />}
+                      </span>
+                      <div>
+                        <span className="detail__taxonomy-key">{label}</span>
+                        <span className="detail__taxonomy-val">{value}</span>
+                      </div>
+                      <span className="detail__taxonomy-chevron">›</span>
                     </div>
-                    <span className="detail__taxonomy-chevron">›</span>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
 

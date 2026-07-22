@@ -3,9 +3,12 @@ export interface TaxonomyInfo {
   filo: string;
   classe: string;
   ordem: string;
+  superfamilia?: string;
   familia: string;
-  genero: string;
+  subfamilia?: string;
+  genero?: string;
   especie: string;
+  acessoGenbank?: string;
 }
 
 export interface OrganismDetail {
@@ -47,3 +50,8 @@ export interface Stat {
   value: string;
   icon: string;
 }
+
+export type MicrobeTaxonomyRank = 'reino' | 'filo' | 'classe' | 'ordem' | 'familia' | 'genero' | 'especie';
+export type AntTaxonomyRank = 'reino' | 'filo' | 'classe' | 'ordem' | 'superfamilia' | 'familia' | 'subfamilia' | 'especie';
+
+export type TaxonomySelectionState = Record<string, string[]>;
