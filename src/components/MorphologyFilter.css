@@ -26,26 +26,33 @@
   font-size: 0.95rem;
 }
 
+/* Flexbox layout always centered regardless of category count */
 .morphology__grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .morphology__card {
   position: relative;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-md, 10px);
   overflow: hidden;
-  aspect-ratio: 1/1.1;
-  background: var(--gray-200);
+  width: 160px;
+  flex: 0 1 160px;
+  aspect-ratio: 1 / 1.1;
+  background: var(--gray-200, #e2e8f0);
   border: none;
   cursor: pointer;
-  transition: transform var(--transition), box-shadow var(--transition);
+  transition: transform var(--transition, 0.2s ease), box-shadow var(--transition, 0.2s ease);
 }
 
 .morphology__card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-lg, 0 10px 15px -3px rgba(0,0,0,0.1));
 }
 
 .morphology__card-img-wrap {
@@ -67,7 +74,7 @@
 .morphology__card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(15,50,30,0.85) 0%, rgba(15,50,30,0.1) 60%);
+  background: linear-gradient(to top, rgba(15,50,30,0.88) 0%, rgba(15,50,30,0.1) 60%);
 }
 
 .morphology__card-info {
@@ -90,23 +97,20 @@
 
 .morphology__card-count {
   display: block;
-  color: rgba(255,255,255,0.7);
+  color: rgba(255,255,255,0.75);
   font-size: 0.7rem;
   margin-top: 2px;
 }
 
-@media (max-width: 900px) {
-  .morphology__grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
 @media (max-width: 480px) {
   .morphology {
-    padding: 48px 20px;
+    padding: 48px 16px;
   }
   .morphology__grid {
-    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
+  }
+  .morphology__card {
+    width: 140px;
+    flex: 0 1 140px;
   }
 }

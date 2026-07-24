@@ -1,7 +1,7 @@
 import './Footer.css';
 
 interface Props {
-  onNavigate: (page: 'home' | 'buscar') => void;
+  onNavigate: (page: string) => void;
 }
 
 const Footer = ({ onNavigate }: Props) => {
@@ -22,39 +22,41 @@ const Footer = ({ onNavigate }: Props) => {
             <span>LBMM DB</span>
           </button>
           <p className="footer__tagline">
-            Plataforma de consulta científica para a comunidade de microbiologia.
+            Plataforma de consulta científica para a comunidade de microbiologia e mirmecologia.
           </p>
         </div>
 
         <div className="footer__links">
           <div className="footer__col">
-            <h4 className="footer__col-title">Links Úteis</h4>
+            <h4 className="footer__col-title">Navegação</h4>
             <button onClick={() => onNavigate('home')}>Início</button>
-            <button onClick={() => onNavigate('buscar')}>Buscar</button>
+            <button onClick={() => onNavigate('buscar')}>Buscar Organismos</button>
+            <button onClick={() => onNavigate('time')}>Equipe de Pesquisa</button>
+            <button onClick={() => onNavigate('fontes')}>Fonte de Dados</button>
+            <button onClick={() => onNavigate('contato')}>Contato</button>
           </div>
 
           <div className="footer__col">
             <h4 className="footer__col-title">Taxonomia</h4>
-            <button onClick={() => onNavigate('buscar')}>Bactéria</button>
-            <button onClick={() => onNavigate('buscar')}>Fungi</button>
-            <button onClick={() => onNavigate('buscar')}>Formiga</button>
-            <button onClick={() => onNavigate('buscar')}>Filos</button>
+            <button onClick={() => onNavigate('buscar')}>Bactérias</button>
+            <button onClick={() => onNavigate('buscar')}>Fungos</button>
+            <button onClick={() => onNavigate('buscar')}>Formigas Atíneas</button>
           </div>
 
           <div className="footer__col">
-            <h4 className="footer__col-title">Categorias</h4>
-            <button onClick={() => onNavigate('buscar')}>Morfologia</button>
-            <button onClick={() => onNavigate('buscar')}>Habitat</button>
-            <button onClick={() => onNavigate('buscar')}>Dados Genômicos</button>
+            <h4 className="footer__col-title">Institucional</h4>
+            <button onClick={() => onNavigate('fontes')}>NCBI GenBank</button>
+            <button onClick={() => onNavigate('fontes')}>RefSeq & UniProt</button>
+            <button onClick={() => onNavigate('contato')}>UNESP Rio Claro</button>
           </div>
         </div>
       </div>
 
       <div className="footer__bottom">
-        <p>© 2026 LBMM DB. Dados compilados de fontes científicas abertas.</p>
+        <p>© 2026 LBMM DB - Laboratório de Bioquímica e Microbiologia Molecular / UNESP.</p>
         <div className="footer__bottom-links">
-          <button>Termos de Uso</button>
-          <button>Privacidade</button>
+          <button onClick={() => onNavigate('fontes')}>Termos de Uso</button>
+          <button onClick={() => onNavigate('contato')}>Contato Acadêmico</button>
         </div>
       </div>
     </footer>

@@ -39,13 +39,7 @@ export const MICROBE_RANKS: RankConfig[] = [
 ];
 
 export const ANT_RANKS: RankConfig[] = [
-  { key: 'reino', label: 'Reinos', singular: 'Reino' },
-  { key: 'filo', label: 'Filos', singular: 'Filo' },
-  { key: 'classe', label: 'Classes', singular: 'Classe' },
-  { key: 'ordem', label: 'Ordens', singular: 'Ordem' },
-  { key: 'superfamilia', label: 'Superfamílias', singular: 'Superfamília' },
-  { key: 'familia', label: 'Famílias', singular: 'Família' },
-  { key: 'subfamilia', label: 'Subfamílias', singular: 'Subfamília' },
+  { key: 'genero', label: 'Gêneros', singular: 'Gênero' },
   { key: 'especie', label: 'Espécies', singular: 'Espécie' },
   { key: 'acessoGenbank', label: 'Acessos GenBank', singular: 'Acesso GenBank' },
 ];
@@ -109,7 +103,7 @@ const TaxonomyFilter: React.FC<Props> = ({
   onChange,
 }) => {
   const [viewMode, setViewMode] = useState<'ranks' | 'tree'>('tree');
-  const [activeRankKey, setActiveRankKey] = useState<string>(ranks[0]?.key || 'filo');
+  const [activeRankKey, setActiveRankKey] = useState<string>(ranks[0]?.key || 'genero');
   const [expandedNodes, setExpandedNodes] = useState<Record<string, boolean>>({});
   const [rankSearch, setRankSearch] = useState<Record<string, string>>({});
 

@@ -236,7 +236,6 @@
   }
 }
 
-
 /* Sort wrap */
 .search-page__sort-wrap {
   display: flex;
@@ -270,18 +269,6 @@
 
 .search-page__btn--center {
   margin: 16px auto 0;
-}
-
-/* Checkbox */
-.search-page__desc-check {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.82rem;
-  color: var(--text-muted);
-  cursor: pointer;
-  margin-bottom: 0;
-  user-select: none;
 }
 
 /* Filters */
@@ -335,6 +322,25 @@
   background: var(--green-dark);
   border-color: var(--green-dark);
   color: white;
+}
+
+.search-page__filter-select {
+  padding: 7px 14px;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background: white;
+  outline: none;
+  cursor: pointer;
+  min-width: 240px;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.search-page__filter-select:focus {
+  border-color: var(--green-accent);
+  box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.15);
 }
 
 /* Results header */
@@ -442,4 +448,3 @@
     grid-template-columns: 1fr;
   }
 }
-
