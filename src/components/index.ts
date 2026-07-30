@@ -8,3 +8,5 @@ export { default as AboutSection } from './AboutSection';
 export { default as CTASection } from './CTASection';
 export { default as OrganismCard } from './OrganismCard';
 export { default as TaxonomyFilter } from './TaxonomyFilter';
+export { SearchableSelect, SearchableMultiSelect } from './SearchableSelect';
+

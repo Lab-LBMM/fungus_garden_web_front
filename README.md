@@ -1,73 +1,95 @@
-# React + TypeScript + Vite
+# MicrobioBase - Fungus Garden Web Front
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Interface web interativa para consulta, filtragem e visualização de dados taxonômicos, morfológicos e ecológicos de fungos e microrganismos. Projeto desenvolvido para o laboratório LBMM / UNESP.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Pré-requisitos e Tecnologias Necessárias
 
-## React Compiler
+Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **[Node.js](https://nodejs.org/)**: Versão `18.0.0` ou superior (recomendado Node.js LTS v20+)
+* **[npm](https://www.npmjs.com/)**: Gerenciador de pacotes (instalado automaticamente com o Node.js) ou **yarn** / **pnpm** / **bun**.
+* **Git**: Para clonar e gerenciar o repositório.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tecnologias Utilizadas
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+O projeto foi construído utilizando as seguintes tecnologias e bibliotecas:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+* **[React 19](https://react.dev/)**: Biblioteca principal para construção da interface de usuário baseada em componentes.
+* **[TypeScript](https://www.typescriptlang.org/)**: Superset do JavaScript que adiciona tipagem estática ao código.
+* **[Vite](https://vitejs.dev/)**: Ferramenta moderna e rápida para build e servidor de desenvolvimento com suporte a HMR (*Hot Module Replacement*).
+* **[React Router DOM v7](https://reactrouter.com/)**: Biblioteca para gerenciamento de rotas e navegação SPA (*Single Page Application*).
+* **[Lucide React](https://lucide.dev/)**: Coleção de ícones modernos e leves para React.
+* **CSS Vanilla**: Estilização modularizada por componente/página com variáveis CSS para fácil manutenção.
+* **[ESLint](https://eslint.org/)**: Ferramenta de linter para garantia de qualidade e padronização do código.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## Comandos para Rodar o Projeto
+
+Siga os passos abaixo para baixar, instalar e executar a aplicação localmente:
+
+### 1. Clonar o Repositório
+```bash
+git clone https://github.com/Lab-LBMM/fungus_garden_web_front.git
+cd fungus_garden_web_front
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 2. Instalar as Dependências
+```bash
+npm install
 ```
+
+### 3. Executar o Servidor de Desenvolvimento
+```bash
+npm run dev
+```
+Após executar o comando acima, o servidor estará rodando. Acesse a URL indicada no terminal (geralmente `http://localhost:5173` ou `http://localhost:5174`).
+
+### 4. Gerar Build de Produção
+Para compilar e otimizar a aplicação para ambiente de produção:
+```bash
+npm run build
+```
+Os arquivos gerados serão salvos na pasta `dist/`.
+
+### 5. Visualizar a Build Localmente
+Para testar a build de produção localmente antes do deploy:
+```bash
+npm run preview
+```
+
+### 6. Executar o Linter
+Para verificar eventuais erros de sintaxe ou inconsistências de código:
+```bash
+npm run lint
+```
+
+---
+
+## Estrutura do Projeto
+
+A organização de pastas do código-fonte dentro do diretório `src/` segue a estrutura abaixo:
+
+```text
+src/
+├── assets/          # Imagens, logos e recursos estáticos
+├── components/      # Componentes reutilizáveis de UI (Header, Footer, OrganismCard, Filtros, etc.)
+├── data/            # Dados locais e esquemas de dados mockados
+├── pages/           # Páginas da aplicação (HomePage, SearchPage, DetailPage, DataSourcesPage, TeamPage, ContactPage)
+├── styles/          # Estilos globais e variáveis CSS
+├── types/           # Definições de interfaces e tipos TypeScript
+├── App.tsx          # Componente raiz e configuração das rotas
+└── main.tsx         # Ponto de entrada da aplicação React
+```
+
+---
+
+## Contribuição e Licença
+
+Este projeto faz parte das iniciativas de pesquisa da UNESP / LBMM. Para dúvidas ou suporte, entre em contato com a equipe de desenvolvimento.
+
+

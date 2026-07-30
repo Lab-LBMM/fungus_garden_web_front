@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, MapPin, Send, CheckCircle2, Clock, Building2, HelpCircle } from 'lucide-react';
+import { Mail, MapPin, Send, CheckCircle2, Building2, HelpCircle } from 'lucide-react';
 import './ContactPage.css';
 
 const ContactPage = () => {
@@ -145,8 +145,8 @@ const ContactPage = () => {
                   <Building2 size={20} />
                 </div>
                 <div>
-                  <strong>Laboratório de Bioquímica e Microbiologia Molecular</strong>
-                  <p>Depto. de Biologia / Instituto de Biociências - UNESP</p>
+                  <strong>Laboratório de Bioinformática e Multi-Ômicas de Microorganismos</strong>
+                  <p>Departamento de Biologia Geral e Aplicada</p>
                 </div>
               </div>
 
@@ -167,19 +167,12 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <strong>Atendimento Acadêmico</strong>
-                  <p>lbmm.contato@unesp.br</p>
+                  <p>labbmmicro@gmail.com</p>
+                  <p>rac.santos@unesp.br</p>
                 </div>
               </div>
 
-              <div className="contact-info__item">
-                <div className="contact-info__icon">
-                  <Clock size={20} />
-                </div>
-                <div>
-                  <strong>Horário de Funcionamento</strong>
-                  <p>Segunda a Sexta: 08:00 - 18:00</p>
-                </div>
-              </div>
+              
             </div>
 
             <div className="contact-card contact-card--help">

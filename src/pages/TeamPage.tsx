@@ -1,4 +1,4 @@
-import { Users, Mail, Award, BookOpen, ExternalLink, ShieldCheck } from 'lucide-react';
+import { Users, Mail, Award, BookOpen, ExternalLink, ShieldCheck, User } from 'lucide-react';
 import './TeamPage.css';
 
 interface TeamMember {
@@ -25,6 +25,7 @@ const teamMembers: TeamMember[] = [
     lattesUrl: 'http://lattes.cnpq.br/',
     bio: 'Especialista em micologia, interações inseto-fungo e filogenia molecular de fungos associados a formigas cultivadoras de jardins.',
     specialties: ['Micologia Ambiental', 'Interações Simbióticas', 'Filogenia Fúngica', 'Microbioma de Formigas'],
+    imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
   },
   {
     id: '2',
@@ -36,6 +37,7 @@ const teamMembers: TeamMember[] = [
     lattesUrl: 'http://lattes.cnpq.br/',
     bio: 'Doutora em Microbiologia Molecular com foco na caracterização metabólica de actinobactérias produtoras de antibióticos.',
     specialties: ['Metabolômica', 'Actinobactérias', 'Screening Antimicrobiano', 'Genômica Funcional'],
+    imageUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
   },
   {
     id: '3',
@@ -47,6 +49,7 @@ const teamMembers: TeamMember[] = [
     lattesUrl: 'http://lattes.cnpq.br/',
     bio: 'Pesquisa a ecologia evolutiva de basidiomicetos cultivados por formigas atíneas e dinâmica metabólica em ninhos.',
     specialties: ['Basidiomycota', 'Ecologia Evolutiva', 'Enzimologia Fúngica'],
+    imageUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
   },
   {
     id: '4',
@@ -58,6 +61,7 @@ const teamMembers: TeamMember[] = [
     lattesUrl: 'http://lattes.cnpq.br/',
     bio: 'Investiga os mecanismos de defesa antimicrobiana da cutícula de formigas cortadeiras contra patógenos fúngicos.',
     specialties: ['Defesa Cuticular', 'Pseudonocardia', 'Patologia de Formigas'],
+    imageUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80',
   },
   {
     id: '5',
@@ -68,6 +72,7 @@ const teamMembers: TeamMember[] = [
     email: 'gabriel.martins@unesp.br',
     bio: 'Engenheiro de software e bioinformata responsável pela arquitetura da base de dados, pipelines de sequenciamento e interface web.',
     specialties: ['Arquitetura de Dados', 'Pipelines de Sequenciamento', 'Interface Web & API', 'Genômica de Comparação'],
+    imageUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80',
   },
   {
     id: '6',
@@ -78,6 +83,7 @@ const teamMembers: TeamMember[] = [
     email: 'camila.duarte@unesp.br',
     bio: 'Responsável pela padronização nomenclatural, validação de números de acesso GenBank e curadoria bibliográfica do banco.',
     specialties: ['Curadoria Taxonômica', 'Nomenclatura Botânica/Micológica', 'Metadados Científicos'],
+    imageUrl: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=400&q=80',
   },
   {
     id: '7',
@@ -88,6 +94,7 @@ const teamMembers: TeamMember[] = [
     email: 'peixotof@smithsonian.org',
     bio: 'Pesquisador em filogenia de Hymenoptera e co-autor de revisões taxonômicas do gênero Atta e Acromyrmex na Região Neotropical.',
     specialties: ['Sistemática de Formicidae', 'Filogeografia', 'Taxonomia Neotropical'],
+    imageUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80',
   },
 ];
 
@@ -96,6 +103,64 @@ const TeamPage = () => {
   const researchers = teamMembers.filter((m) => m.category === 'researchers');
   const developers = teamMembers.filter((m) => m.category === 'developers');
   const collaborators = teamMembers.filter((m) => m.category === 'collaborators');
+
+  const renderMemberCard = (member: TeamMember, isFeatured = false) => (
+    <div key={member.id} className={`team-card ${isFeatured ? 'team-card--featured' : ''}`}>
+      <div className="team-card__header">
+        <div className="team-card__photo-wrap">
+          {member.imageUrl ? (
+            <img
+              src={member.imageUrl}
+              alt={member.name}
+              className="team-card__photo"
+              onError={(e) => {
+                // Fallback se a imagem remota não carregar
+                (e.target as HTMLImageElement).style.display = 'none';
+              }}
+            />
+          ) : (
+            <div className="team-card__photo-fallback">
+              <User size={28} />
+            </div>
+          )}
+        </div>
+        <div className="team-card__identity">
+          <h3 className="team-card__name">{member.name}</h3>
+          <span className="team-card__role">{member.role}</span>
+          <span className="team-card__affiliation">{member.affiliation}</span>
+        </div>
+      </div>
+
+      <p className="team-card__bio">{member.bio}</p>
+
+      <div className="team-card__tags">
+        {member.specialties.map((spec, i) => (
+          <span key={i} className="team-card__tag">
+            {spec}
+          </span>
+        ))}
+      </div>
+
+      <div className="team-card__footer">
+        <a href={`mailto:${member.email}`} className="team-card__link">
+          <Mail size={14} />
+          {member.email}
+        </a>
+        {member.lattesUrl && (
+          <a
+            href={member.lattesUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="team-card__link"
+          >
+            <BookOpen size={14} />
+            Currículo Lattes
+            <ExternalLink size={12} />
+          </a>
+        )}
+      </div>
+    </div>
+  );
 
   return (
     <div className="team-page">
@@ -120,39 +185,7 @@ const TeamPage = () => {
             <h2>Coordenação & Liderança Científica</h2>
           </div>
           <div className="team-page__grid">
-            {coordination.map((member) => (
-              <div key={member.id} className="team-card team-card--featured">
-                <div className="team-card__header">
-                  <div className="team-card__avatar">
-                    {member.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
-                  </div>
-                  <div>
-                    <h3 className="team-card__name">{member.name}</h3>
-                    <span className="team-card__role">{member.role}</span>
-                    <span className="team-card__affiliation">{member.affiliation}</span>
-                  </div>
-                </div>
-                <p className="team-card__bio">{member.bio}</p>
-                <div className="team-card__tags">
-                  {member.specialties.map((spec, i) => (
-                    <span key={i} className="team-card__tag">{spec}</span>
-                  ))}
-                </div>
-                <div className="team-card__footer">
-                  <a href={`mailto:${member.email}`} className="team-card__link">
-                    <Mail size={14} />
-                    {member.email}
-                  </a>
-                  {member.lattesUrl && (
-                    <a href={member.lattesUrl} target="_blank" rel="noopener noreferrer" className="team-card__link">
-                      <BookOpen size={14} />
-                      Currículo Lattes
-                      <ExternalLink size={12} />
-                    </a>
-                  )}
-                </div>
-              </div>
-            ))}
+            {coordination.map((member) => renderMemberCard(member, true))}
           </div>
         </section>
 
@@ -163,32 +196,7 @@ const TeamPage = () => {
             <h2>Pesquisadores & Doutorandos</h2>
           </div>
           <div className="team-page__grid">
-            {researchers.map((member) => (
-              <div key={member.id} className="team-card">
-                <div className="team-card__header">
-                  <div className="team-card__avatar team-card__avatar--slate">
-                    {member.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
-                  </div>
-                  <div>
-                    <h3 className="team-card__name">{member.name}</h3>
-                    <span className="team-card__role">{member.role}</span>
-                    <span className="team-card__affiliation">{member.affiliation}</span>
-                  </div>
-                </div>
-                <p className="team-card__bio">{member.bio}</p>
-                <div className="team-card__tags">
-                  {member.specialties.map((spec, i) => (
-                    <span key={i} className="team-card__tag">{spec}</span>
-                  ))}
-                </div>
-                <div className="team-card__footer">
-                  <a href={`mailto:${member.email}`} className="team-card__link">
-                    <Mail size={14} />
-                    {member.email}
-                  </a>
-                </div>
-              </div>
-            ))}
+            {researchers.map((member) => renderMemberCard(member))}
           </div>
         </section>
 
@@ -199,32 +207,7 @@ const TeamPage = () => {
             <h2>Bioinformática & Curadoria de Dados</h2>
           </div>
           <div className="team-page__grid">
-            {developers.map((member) => (
-              <div key={member.id} className="team-card">
-                <div className="team-card__header">
-                  <div className="team-card__avatar team-card__avatar--slate">
-                    {member.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
-                  </div>
-                  <div>
-                    <h3 className="team-card__name">{member.name}</h3>
-                    <span className="team-card__role">{member.role}</span>
-                    <span className="team-card__affiliation">{member.affiliation}</span>
-                  </div>
-                </div>
-                <p className="team-card__bio">{member.bio}</p>
-                <div className="team-card__tags">
-                  {member.specialties.map((spec, i) => (
-                    <span key={i} className="team-card__tag">{spec}</span>
-                  ))}
-                </div>
-                <div className="team-card__footer">
-                  <a href={`mailto:${member.email}`} className="team-card__link">
-                    <Mail size={14} />
-                    {member.email}
-                  </a>
-                </div>
-              </div>
-            ))}
+            {developers.map((member) => renderMemberCard(member))}
           </div>
         </section>
 
@@ -235,32 +218,7 @@ const TeamPage = () => {
             <h2>Colaboradores Institucionais</h2>
           </div>
           <div className="team-page__grid">
-            {collaborators.map((member) => (
-              <div key={member.id} className="team-card">
-                <div className="team-card__header">
-                  <div className="team-card__avatar team-card__avatar--slate">
-                    {member.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
-                  </div>
-                  <div>
-                    <h3 className="team-card__name">{member.name}</h3>
-                    <span className="team-card__role">{member.role}</span>
-                    <span className="team-card__affiliation">{member.affiliation}</span>
-                  </div>
-                </div>
-                <p className="team-card__bio">{member.bio}</p>
-                <div className="team-card__tags">
-                  {member.specialties.map((spec, i) => (
-                    <span key={i} className="team-card__tag">{spec}</span>
-                  ))}
-                </div>
-                <div className="team-card__footer">
-                  <a href={`mailto:${member.email}`} className="team-card__link">
-                    <Mail size={14} />
-                    {member.email}
-                  </a>
-                </div>
-              </div>
-            ))}
+            {collaborators.map((member) => renderMemberCard(member))}
           </div>
         </section>
       </div>

@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
-import { Search, SlidersHorizontal, Filter, RotateCcw, Dna, Bug } from 'lucide-react';
+import { Search, SlidersHorizontal, Filter, RotateCcw, Dna, Bug, ArrowUpDown } from 'lucide-react';
 import { organisms } from '../data/organisms';
 import OrganismCard from '../components/OrganismCard';
 import TaxonomyFilter, {
@@ -7,6 +7,7 @@ import TaxonomyFilter, {
   ANT_RANKS,
   getInitialSelection,
 } from '../components/TaxonomyFilter';
+import { SearchableSelect, SearchableMultiSelect } from '../components/SearchableSelect';
 import './SearchPage.css';
 
 /**
@@ -51,8 +52,8 @@ const SearchPage = ({ onViewDetail }: Props) => {
   const [searchInDesc, setSearchInDesc] = useState(false);
   const [reino, setReino] = useState<'Todos' | 'Formiga' | 'Bacteria' | 'Fungo'>('Todos');
   const [morphFilter, setMorphFilter] = useState<string | null>(null);
-  const [selectedBacteriaFilter, setSelectedBacteriaFilter] = useState<string | null>(null);
-  const [selectedFungiFilter, setSelectedFungiFilter] = useState<string | null>(null);
+  const [selectedBacteriaFilters, setSelectedBacteriaFilters] = useState<string[]>([]);
+  const [selectedFungiFilters, setSelectedFungiFilters] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState<'name' | 'type' | 'genome'>('name');
 
   // Estados para expansao e navegacao da secao taxonomica
@@ -124,8 +125,8 @@ const SearchPage = ({ onViewDetail }: Props) => {
 
   // Reseta filtros relacionais ao alterar o filtro de reino
   useEffect(() => {
-    setSelectedBacteriaFilter(null);
-    setSelectedFungiFilter(null);
+    setSelectedBacteriaFilters([]);
+    setSelectedFungiFilters([]);
 
     if (reino === 'Bacteria' || reino === 'Fungo') {
       setActiveTaxonomyTab('microbes');
@@ -134,13 +135,40 @@ const SearchPage = ({ onViewDetail }: Props) => {
     }
   }, [reino]);
 
+  // Organismos filtrados por morfologia para alimentar a taxonomia dinamicamente
+  const filteredByMorphologyOrgs = useMemo(() => {
+    if (!morphFilter) return organisms;
+    let matches: string[] = [];
+    if (reino !== 'Todos') {
+      const item = MORPHOLOGY_BY_REINO[reino]?.find((x) => x.label === morphFilter);
+      if (item) matches = item.match;
+    } else {
+      for (const key of Object.keys(MORPHOLOGY_BY_REINO) as ('Formiga' | 'Bacteria' | 'Fungo')[]) {
+        const item = MORPHOLOGY_BY_REINO[key].find((x) => x.label === morphFilter);
+        if (item) {
+          matches = item.match;
+          break;
+        }
+      }
+    }
+
+    return organisms.filter((org) => {
+      if (matches.length > 0) {
+        const morphLower = org.morphology.toLowerCase();
+        const tagsLower = org.tags.map((t) => t.toLowerCase());
+        return matches.some((m) => morphLower.includes(m) || tagsLower.some((t) => t.includes(m)));
+      }
+      return org.morphology.toLowerCase().includes(morphFilter.toLowerCase());
+    });
+  }, [morphFilter, reino]);
+
   const microbeOrganisms = useMemo(
-    () => organisms.filter((o) => o.type === 'Bacteria' || o.type === 'Fungo'),
-    []
+    () => filteredByMorphologyOrgs.filter((o) => o.type === 'Bacteria' || o.type === 'Fungo'),
+    [filteredByMorphologyOrgs]
   );
   const antOrganisms = useMemo(
-    () => organisms.filter((o) => o.type === 'Formiga'),
-    []
+    () => filteredByMorphologyOrgs.filter((o) => o.type === 'Formiga'),
+    [filteredByMorphologyOrgs]
   );
 
   const totalMicrobeFilters = useMemo(
@@ -196,36 +224,40 @@ const SearchPage = ({ onViewDetail }: Props) => {
       }
 
       let matchAssociatedBacteria = true;
-      if (selectedBacteriaFilter) {
+      if (selectedBacteriaFilters.length > 0) {
         if (org.type === 'Formiga') {
           matchAssociatedBacteria = Boolean(
             org.associatedBacteria &&
-              org.associatedBacteria.some(
-                (b) => b.toLowerCase() === selectedBacteriaFilter.toLowerCase()
+              selectedBacteriaFilters.every((sel) =>
+                org.associatedBacteria!.some((b) => b.toLowerCase() === sel.toLowerCase())
               )
           );
         } else if (org.type === 'Bacteria') {
-          matchAssociatedBacteria =
-            org.name.toLowerCase().includes(selectedBacteriaFilter.toLowerCase()) ||
-            org.commonName.toLowerCase().includes(selectedBacteriaFilter.toLowerCase());
+          matchAssociatedBacteria = selectedBacteriaFilters.every(
+            (sel) =>
+              org.name.toLowerCase().includes(sel.toLowerCase()) ||
+              org.commonName.toLowerCase().includes(sel.toLowerCase())
+          );
         } else {
           matchAssociatedBacteria = false;
         }
       }
 
       let matchAssociatedFungi = true;
-      if (selectedFungiFilter) {
+      if (selectedFungiFilters.length > 0) {
         if (org.type === 'Formiga') {
           matchAssociatedFungi = Boolean(
             org.associatedFungi &&
-              org.associatedFungi.some(
-                (f) => f.toLowerCase() === selectedFungiFilter.toLowerCase()
+              selectedFungiFilters.every((sel) =>
+                org.associatedFungi!.some((f) => f.toLowerCase() === sel.toLowerCase())
               )
           );
         } else if (org.type === 'Fungo') {
-          matchAssociatedFungi =
-            org.name.toLowerCase().includes(selectedFungiFilter.toLowerCase()) ||
-            org.commonName.toLowerCase().includes(selectedFungiFilter.toLowerCase());
+          matchAssociatedFungi = selectedFungiFilters.every(
+            (sel) =>
+              org.name.toLowerCase().includes(sel.toLowerCase()) ||
+              org.commonName.toLowerCase().includes(sel.toLowerCase())
+          );
         } else {
           matchAssociatedFungi = false;
         }
@@ -265,7 +297,7 @@ const SearchPage = ({ onViewDetail }: Props) => {
     });
 
     return filtered;
-  }, [query, searchInDesc, reino, morphFilter, selectedBacteriaFilter, selectedFungiFilter, microbeSelection, antSelection, sortBy]);
+  }, [query, searchInDesc, reino, morphFilter, selectedBacteriaFilters, selectedFungiFilters, microbeSelection, antSelection, sortBy]);
 
   // Reseta todos os parametros de busca para o estado inicial
   const resetAllFilters = () => {
@@ -273,11 +305,32 @@ const SearchPage = ({ onViewDetail }: Props) => {
     setSearchInDesc(false);
     setReino('Todos');
     setMorphFilter(null);
-    setSelectedBacteriaFilter(null);
-    setSelectedFungiFilter(null);
+    setSelectedBacteriaFilters([]);
+    setSelectedFungiFilters([]);
     setMicrobeSelection(getInitialSelection(MICROBE_RANKS));
     setAntSelection(getInitialSelection(ANT_RANKS));
   };
+
+  const morphologyOptions = useMemo(
+    () => availableMorphologyFilters.map((m) => ({ label: m, value: m })),
+    [availableMorphologyFilters]
+  );
+
+  const bacteriaOptions = useMemo(
+    () => availableAssociatedBacteria.map((b) => ({ label: b, value: b })),
+    [availableAssociatedBacteria]
+  );
+
+  const fungiOptions = useMemo(
+    () => availableAssociatedFungi.map((f) => ({ label: f, value: f })),
+    [availableAssociatedFungi]
+  );
+
+  const sortOptions = [
+    { label: 'Nome (A-Z)', value: 'name' },
+    { label: 'Tipo / Reino', value: 'type' },
+    { label: 'Tamanho do Genoma', value: 'genome' },
+  ];
 
   return (
     <div className="search-page">
@@ -311,7 +364,12 @@ const SearchPage = ({ onViewDetail }: Props) => {
             <span>Buscar na descrição e tags</span>
           </label>
 
-          {(query || reino !== 'Todos' || morphFilter || selectedBacteriaFilter || selectedFungiFilter || totalTaxonomyFilters > 0) && (
+          {(query ||
+            reino !== 'Todos' ||
+            morphFilter ||
+            selectedBacteriaFilters.length > 0 ||
+            selectedFungiFilters.length > 0 ||
+            totalTaxonomyFilters > 0) && (
             <button className="search-page__reset-all-btn" onClick={resetAllFilters}>
               <RotateCcw size={13} />
               Resetar Todos os Filtros
@@ -334,63 +392,39 @@ const SearchPage = ({ onViewDetail }: Props) => {
           </div>
 
           <div className="search-page__filter-group">
-            <label htmlFor="morphology-select" className="search-page__filter-label">
-              Morfologia:
-            </label>
-            <select
+            <SearchableSelect
+              label="Morfologia (Pesquisável):"
+              placeholder="Todas as Morfologias"
+              options={morphologyOptions}
+              value={morphFilter}
+              onChange={setMorphFilter}
               id="morphology-select"
-              className="search-page__filter-select"
-              value={morphFilter || ''}
-              onChange={(e) => setMorphFilter(e.target.value || null)}
-            >
-              <option value="">Todas as Morfologias</option>
-              {availableMorphologyFilters.map((m) => (
-                <option key={m} value={m}>
-                  {m}
-                </option>
-              ))}
-            </select>
+            />
           </div>
 
           {(reino === 'Formiga' || reino === 'Todos') && availableAssociatedBacteria.length > 0 && (
             <div className="search-page__filter-group">
-              <label htmlFor="bacteria-associated-select" className="search-page__filter-label">
-                Bactéria Associada:
-              </label>
-              <select
+              <SearchableMultiSelect
+                label="Bactérias em Formigas (Checkboxes):"
+                placeholder="Todas as Bactérias Relacionadas"
+                options={bacteriaOptions}
+                selectedValues={selectedBacteriaFilters}
+                onChange={setSelectedBacteriaFilters}
                 id="bacteria-associated-select"
-                className="search-page__filter-select"
-                value={selectedBacteriaFilter || ''}
-                onChange={(e) => setSelectedBacteriaFilter(e.target.value || null)}
-              >
-                <option value="">Todas as Bactérias Relacionadas</option>
-                {availableAssociatedBacteria.map((b) => (
-                  <option key={b} value={b}>
-                    {b}
-                  </option>
-                ))}
-              </select>
+              />
             </div>
           )}
 
           {(reino === 'Formiga' || reino === 'Todos') && availableAssociatedFungi.length > 0 && (
             <div className="search-page__filter-group">
-              <label htmlFor="fungi-associated-select" className="search-page__filter-label">
-                Fungo Cultivado:
-              </label>
-              <select
+              <SearchableMultiSelect
+                label="Fungos em Formigas (Checkboxes):"
+                placeholder="Todos os Fungos Cultivados"
+                options={fungiOptions}
+                selectedValues={selectedFungiFilters}
+                onChange={setSelectedFungiFilters}
                 id="fungi-associated-select"
-                className="search-page__filter-select"
-                value={selectedFungiFilter || ''}
-                onChange={(e) => setSelectedFungiFilter(e.target.value || null)}
-              >
-                <option value="">Todos os Fungos Cultivados</option>
-                {availableAssociatedFungi.map((f) => (
-                  <option key={f} value={f}>
-                    {f}
-                  </option>
-                ))}
-              </select>
+              />
             </div>
           )}
         </div>
@@ -481,16 +515,13 @@ const SearchPage = ({ onViewDetail }: Props) => {
           </span>
 
           <div className="search-page__sort-wrap">
-            <span className="search-page__sort-label">Ordenar por:</span>
-            <select
-              className="search-page__sort-select"
+            <SearchableSelect
+              placeholder="Ordenar por"
+              options={sortOptions}
               value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as any)}
-            >
-              <option value="name">Nome (A-Z)</option>
-              <option value="type">Tipo/Organismo</option>
-              <option value="genome">Tamanho do Genoma</option>
-            </select>
+              onChange={(val) => setSortBy((val as any) || 'name')}
+              icon={<ArrowUpDown size={14} />}
+            />
           </div>
         </div>
 
