@@ -1,16 +1,17 @@
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { Search } from 'lucide-react';
 import './Hero.css';
 
 interface Props {
-  onSearch: () => void;
+  onSearch: (query?: string) => void;
 }
 
 const Hero = ({ onSearch }: Props) => {
   const [query, setQuery] = useState('');
 
-  const handleSearch = () => {
-    onSearch();
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    onSearch(query.trim());
   };
 
   return (
@@ -22,23 +23,21 @@ const Hero = ({ onSearch }: Props) => {
           Explore o Mundo<br />Microscópico
         </h1>
         <p className="hero__subtitle">
-          Acesse dados taxonômicos e genômicos de fungos e bactérias em uma<br className="hero__br" />
-          plataforma desenhada para a comunidade científica.
+         Acesse dados taxonômicos e metagenômicos de fungos e bactérias em jardins de fungos cultivados por formigas.
         </p>
-        <div className="hero__search">
+        <form className="hero__search" onSubmit={handleSubmit}>
           <div className="hero__search-input-wrap">
             <Search size={17} className="hero__search-icon" />
             <input
               type="text"
               className="hero__search-input"
-              placeholder="Buscar por nome científico ou comum..."
+              placeholder="Buscar por nome científico, comum ou descrição..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
             />
           </div>
-          <button className="hero__search-btn" onClick={handleSearch}>Buscar</button>
-        </div>
+          <button type="submit" className="hero__search-btn">Buscar</button>
+        </form>
       </div>
     </section>
   );

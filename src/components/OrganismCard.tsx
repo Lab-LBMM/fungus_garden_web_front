@@ -4,14 +4,18 @@ import './OrganismCard.css';
 interface Props {
   organism: Organism;
   onViewDetail?: (id: number) => void;
+  onClick?: () => void;
 }
 
-const OrganismCard = ({ organism, onViewDetail }: Props) => {
+const OrganismCard = ({ organism, onViewDetail, onClick }: Props) => {
   return (
     <article
       className="organism-card"
-      onClick={() => onViewDetail?.(organism.id)}
-      style={{ cursor: onViewDetail ? 'pointer' : 'default' }}
+      onClick={() => {
+        if (onClick) onClick();
+        else if (onViewDetail) onViewDetail(organism.id);
+      }}
+      style={{ cursor: onClick || onViewDetail ? 'pointer' : 'default' }}
     >
       <div
         className="organism-card__img-wrap"

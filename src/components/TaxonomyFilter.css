@@ -1,0 +1,555 @@
+/* TaxonomyFilter styling */
+.taxonomy-filter {
+  background: white;
+  border: 1px solid var(--gray-200);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 28px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: border-color var(--transition);
+}
+
+.taxonomy-filter:hover {
+  border-color: var(--gray-300);
+}
+
+/* Header */
+.taxonomy-filter__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--gray-100);
+  margin-bottom: 16px;
+}
+
+.taxonomy-filter__title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.taxonomy-filter__icon {
+  color: var(--green-primary);
+}
+
+.taxonomy-filter__title {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.taxonomy-filter__badge {
+  background: var(--green-light);
+  color: var(--green-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 12px;
+  border: 1px solid rgba(39, 174, 96, 0.2);
+}
+
+.taxonomy-filter__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Mode toggle */
+.taxonomy-filter__mode-toggle {
+  display: flex;
+  background: var(--gray-100);
+  padding: 3px;
+  border-radius: 8px;
+  gap: 2px;
+}
+
+.taxonomy-filter__mode-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.taxonomy-filter__mode-btn:hover {
+  color: var(--text-primary);
+}
+
+.taxonomy-filter__mode-btn--active {
+  background: white;
+  color: var(--green-primary);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.taxonomy-filter__clear-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--red, #e74c3c);
+  background: #fdf2f2;
+  border: 1px solid #fecdcd;
+  padding: 5px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.taxonomy-filter__clear-btn:hover {
+  background: #fde8e8;
+  border-color: #fca5a5;
+}
+
+/* Active Chips */
+.taxonomy-filter__chips {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 10px 12px;
+  background: var(--off-white);
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.taxonomy-filter__chips-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.taxonomy-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: white;
+  border: 1px solid var(--gray-200);
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  color: var(--text-primary);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.taxonomy-chip__rank {
+  font-weight: 600;
+  color: var(--green-primary);
+}
+
+.taxonomy-chip__val {
+  font-weight: 500;
+}
+
+.taxonomy-chip__remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--gray-400);
+  cursor: pointer;
+  padding: 2px;
+  border-radius: 50%;
+  transition: color var(--transition);
+}
+
+.taxonomy-chip__remove:hover {
+  color: #e74c3c;
+}
+
+/* TREE VIEW */
+.taxonomy-filter__tree-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.taxonomy-filter__tree-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.taxonomy-filter__tree-expand-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.taxonomy-text-btn {
+  background: none;
+  border: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--green-primary);
+  cursor: pointer;
+  padding: 0;
+  transition: color var(--transition);
+}
+
+.taxonomy-text-btn:hover {
+  color: var(--green-dark);
+  text-decoration: underline;
+}
+
+.taxonomy-text-btn--danger {
+  color: #e74c3c;
+}
+
+.taxonomy-text-btn--danger:hover {
+  color: #c0392b;
+}
+
+.taxonomy-divider {
+  color: var(--gray-300);
+}
+
+.taxonomy-tree {
+  max-height: 380px;
+  overflow-y: auto;
+  padding-right: 6px;
+  border: 1px solid var(--gray-100);
+  border-radius: 8px;
+  background: #fafbfc;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.taxonomy-tree__item-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.taxonomy-tree__item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 12px;
+  border-radius: 6px;
+  transition: background var(--transition);
+}
+
+.taxonomy-tree__item:hover {
+  background: rgba(39, 174, 96, 0.05);
+}
+
+.taxonomy-tree__item--selected {
+  background: var(--green-light);
+}
+
+.taxonomy-tree__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0;
+  border-radius: 4px;
+}
+
+.taxonomy-tree__toggle:hover {
+  background: var(--gray-200);
+  color: var(--text-primary);
+}
+
+.taxonomy-tree__toggle--hidden {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.taxonomy-tree__checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  flex: 1;
+  user-select: none;
+  font-size: 0.85rem;
+}
+
+.taxonomy-checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--green-primary);
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.taxonomy-tree__rank-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--gray-200);
+  color: var(--text-secondary);
+}
+
+.taxonomy-tree__node-name {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.taxonomy-tree__count {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-left: 4px;
+}
+
+/* RANKS MODE */
+.taxonomy-filter__ranks-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.taxonomy-filter__tabs {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: thin;
+}
+
+.taxonomy-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--off-white);
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition);
+}
+
+.taxonomy-tab:hover {
+  border-color: var(--green-accent);
+  background: white;
+  color: var(--green-primary);
+}
+
+.taxonomy-tab--active {
+  background: var(--green-primary);
+  border-color: var(--green-primary);
+  color: white;
+}
+
+.taxonomy-tab--active:hover {
+  background: var(--green-dark);
+  color: white;
+}
+
+.taxonomy-tab--has-selected {
+  border-color: var(--green-primary);
+}
+
+.taxonomy-tab__icon {
+  display: flex;
+  align-items: center;
+}
+
+.taxonomy-tab__badge {
+  background: white;
+  color: var(--green-primary);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+
+.taxonomy-tab--active .taxonomy-tab__badge {
+  background: white;
+  color: var(--green-primary);
+}
+
+.taxonomy-tab__count {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.taxonomy-tab--active .taxonomy-tab__count {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.taxonomy-filter__rank-content {
+  background: #fafbfc;
+  border: 1px solid var(--gray-200);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.taxonomy-filter__rank-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.taxonomy-filter__rank-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.taxonomy-filter__rank-icon-wrap {
+  display: flex;
+  align-items: center;
+  color: var(--green-primary);
+}
+
+.taxonomy-filter__rank-title h4 {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.taxonomy-filter__rank-sub {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.taxonomy-filter__search-wrap {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.taxonomy-filter__search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray-400);
+}
+
+.taxonomy-filter__search-input {
+  width: 100%;
+  padding: 6px 12px 6px 30px;
+  border: 1px solid var(--gray-200);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  outline: none;
+}
+
+.taxonomy-filter__search-input:focus {
+  border-color: var(--green-accent);
+}
+
+.taxonomy-filter__checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+  max-height: 280px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.taxonomy-checkbox-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  border: 1px solid var(--gray-200);
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.taxonomy-checkbox-card:hover {
+  border-color: var(--green-accent);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.taxonomy-checkbox-card--selected {
+  border-color: var(--green-primary);
+  background: var(--green-light);
+}
+
+.taxonomy-checkbox-card__info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+.taxonomy-checkbox-card__name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.taxonomy-checkbox-card__parent {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.taxonomy-checkbox-card__count {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--gray-100);
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+
+.taxonomy-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 24px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .taxonomy-filter {
+    padding: 14px;
+  }
+
+  .taxonomy-filter__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .taxonomy-filter__actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .taxonomy-filter__checkbox-grid {
+    grid-template-columns: 1fr;
+  }
+}

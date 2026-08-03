@@ -1,0 +1,460 @@
+.detail {
+  min-height: calc(100vh - 58px);
+  background: var(--off-white, #f8fafc);
+  padding-bottom: 80px;
+}
+
+.detail__hero {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 280px;
+  display: flex;
+  align-items: flex-end;
+  padding: 40px 24px;
+}
+
+.detail__hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.4) 60%, rgba(15, 23, 42, 0.2) 100%);
+}
+
+.detail__hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.detail__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.detail__back:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateX(-2px);
+}
+
+.detail__hero-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.detail__type-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.detail__type-badge--bacteria {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.detail__type-badge--fungo {
+  background: #fef9c3;
+  color: #a16207;
+}
+
+.detail__type-badge--formiga {
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+.detail__name {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: white;
+  line-height: 1.1;
+  font-style: italic;
+  margin-bottom: 4px;
+}
+
+.detail__common {
+  font-size: 1.05rem;
+  color: #cbd5e1;
+  font-weight: 400;
+}
+
+.detail__hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.detail__hero-tag {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  color: #f1f5f9;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 16px;
+}
+
+/* Body layout */
+.detail__body {
+  max-width: 1100px;
+  margin: 32px auto 0;
+  padding: 0 24px;
+}
+
+.detail__layout {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.detail__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.detail__main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Cards */
+.detail__card {
+  background: white;
+  border: 1.5px solid var(--gray-200, #e2eae5);
+  border-radius: var(--radius-md, 12px);
+  padding: 24px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+
+.detail__card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary, #0f172a);
+  margin-bottom: 16px;
+}
+
+.detail__card-sub {
+  font-size: 0.85rem;
+  color: var(--text-secondary, #64748b);
+  margin-top: -12px;
+  margin-bottom: 20px;
+}
+
+.detail__description {
+  font-size: 0.95rem;
+  color: var(--text-primary, #334155);
+  line-height: 1.6;
+}
+
+.detail__habitat {
+  font-size: 0.9rem;
+  color: var(--text-secondary, #475569);
+  line-height: 1.5;
+}
+
+/* Featured card for colony/fungus/bacterium characterization */
+.detail__card--featured {
+  border-left: 4px solid var(--green-primary, #2e7d32);
+}
+
+.detail__card-header-badge {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--gray-200, #e2eae5);
+}
+
+.detail__featured-icon {
+  color: var(--green-primary, #2e7d32);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.detail__featured-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary, #0f172a);
+  margin-bottom: 2px;
+}
+
+.detail__featured-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.detail__featured-item {
+  background: var(--off-white, #f8fafc);
+  border: 1px solid var(--gray-200, #e2eae5);
+  border-radius: 8px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detail__featured-item--full {
+  grid-column: 1 / -1;
+}
+
+.detail__featured-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-secondary, #64748b);
+}
+
+.detail__featured-val {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary, #0f172a);
+}
+
+.detail__featured-val--highlight {
+  color: var(--green-primary, #2e7d32);
+}
+
+.detail__symbionts-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.detail__symbiont-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+
+.detail__symbiont-pill--bacteria {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #065f46;
+}
+
+.detail__symbiont-pill--fungi {
+  background: #fefce8;
+  border-color: #fef08a;
+  color: #854d0e;
+}
+
+/* Taxonomy List */
+.detail__taxonomy-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detail__taxonomy-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: var(--off-white, #f8fafc);
+  border-radius: 8px;
+  border: 1px solid var(--gray-200, #e2eae5);
+}
+
+.detail__taxonomy-icon {
+  color: var(--green-primary, #2e7d32);
+  display: flex;
+  align-items: center;
+}
+
+.detail__taxonomy-key {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-secondary, #64748b);
+}
+
+.detail__taxonomy-val {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary, #0f172a);
+}
+
+.detail__taxonomy-chevron {
+  margin-left: auto;
+  color: #cbd5e1;
+  font-size: 1.1rem;
+}
+
+/* GC Donut */
+.detail__gc-body {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.detail__gc-donut-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail__gc-bars {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 200px;
+}
+
+.detail__gc-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.detail__gc-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.detail__gc-dot--gc {
+  background: var(--green-primary, #2e7d32);
+}
+
+.detail__gc-dot--at {
+  background: #cbd5e1;
+}
+
+.detail__gc-bar-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary, #0f172a);
+  width: 24px;
+}
+
+.detail__gc-bar-track {
+  flex: 1;
+  height: 8px;
+  background: #f1f5f9;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.detail__gc-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+}
+
+.detail__gc-bar-fill--gc {
+  background: var(--green-primary, #2e7d32);
+}
+
+.detail__gc-bar-fill--at {
+  background: #94a3b8;
+}
+
+.detail__gc-bar-pct {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary, #64748b);
+  width: 45px;
+  text-align: right;
+}
+
+.detail__gc-note {
+  font-size: 0.8rem;
+  color: var(--text-secondary, #64748b);
+  margin-top: 4px;
+  font-style: italic;
+}
+
+/* References */
+.detail__refs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.detail__ref-row {
+  display: flex;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--text-secondary, #475569);
+  line-height: 1.4;
+}
+
+.detail__ref-num {
+  font-weight: 700;
+  color: var(--green-primary, #2e7d32);
+}
+
+.detail__genbank {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary, #0f172a);
+  padding-top: 14px;
+  border-top: 1px solid var(--gray-200, #e2eae5);
+}
+
+.detail__genbank-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--green-primary, #2e7d32);
+  text-decoration: none;
+}
+
+.detail__genbank-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 868px) {
+  .detail__layout {
+    grid-template-columns: 1fr;
+  }
+}

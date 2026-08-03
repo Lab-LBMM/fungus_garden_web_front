@@ -3,14 +3,14 @@ import { Menu, X } from 'lucide-react';
 import './Header.css';
 
 interface Props {
-  currentPage: 'home' | 'buscar';
-  onNavigate: (page: 'home' | 'buscar') => void;
+  currentPage: string;
+  onNavigate: (page: string) => void;
 }
 
 const Header = ({ currentPage, onNavigate }: Props) => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const nav = (page: 'home' | 'buscar') => {
+  const nav = (page: string) => {
     onNavigate(page);
     setMobileOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -29,18 +29,40 @@ const Header = ({ currentPage, onNavigate }: Props) => {
               <circle cx="16.5" cy="14" r="1" fill="white" opacity="0.6" />
             </svg>
           </div>
-          <span>LBMM DB</span>
+          <span>Ômicas de Jardins de Fungos de Formigas</span>
         </button>
 
         <nav className="header__nav">
           <button
             className={`header__nav-link ${currentPage === 'home' ? 'header__nav-link--active' : ''}`}
             onClick={() => nav('home')}
-          >Início</button>
+          >
+            Início
+          </button>
           <button
             className={`header__nav-link ${currentPage === 'buscar' ? 'header__nav-link--active' : ''}`}
             onClick={() => nav('buscar')}
-          >Buscar</button>
+          >
+            Buscar
+          </button>
+          <button
+            className={`header__nav-link ${currentPage === 'time' ? 'header__nav-link--active' : ''}`}
+            onClick={() => nav('time')}
+          >
+            Equipe
+          </button>
+          <button
+            className={`header__nav-link ${currentPage === 'fontes' ? 'header__nav-link--active' : ''}`}
+            onClick={() => nav('fontes')}
+          >
+            Fonte de Dados
+          </button>
+          <button
+            className={`header__nav-link ${currentPage === 'contato' ? 'header__nav-link--active' : ''}`}
+            onClick={() => nav('contato')}
+          >
+            Contato
+          </button>
           <button className="header__nav-btn" onClick={() => nav('buscar')}>
             Ver Todos os Organismos
           </button>
@@ -59,6 +81,9 @@ const Header = ({ currentPage, onNavigate }: Props) => {
         <div className="header__mobile-menu">
           <button className="header__mobile-link" onClick={() => nav('home')}>Início</button>
           <button className="header__mobile-link" onClick={() => nav('buscar')}>Buscar</button>
+          <button className="header__mobile-link" onClick={() => nav('time')}>Equipe</button>
+          <button className="header__mobile-link" onClick={() => nav('fontes')}>Fonte de Dados</button>
+          <button className="header__mobile-link" onClick={() => nav('contato')}>Contato</button>
           <button className="header__mobile-link header__mobile-link--btn" onClick={() => nav('buscar')}>
             Ver Todos os Organismos
           </button>
