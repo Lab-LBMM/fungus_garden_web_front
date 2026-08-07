@@ -58,6 +58,12 @@ const Header = ({ currentPage, onNavigate }: Props) => {
             Fonte de Dados
           </button>
           <button
+            className={`header__nav-link ${currentPage === 'sequenciamento' ? 'header__nav-link--active' : ''}`}
+            onClick={() => nav('sequenciamento')}
+          >
+            Sequenciamento
+          </button>
+          <button
             className={`header__nav-link ${currentPage === 'contato' ? 'header__nav-link--active' : ''}`}
             onClick={() => nav('contato')}
           >
@@ -81,6 +87,7 @@ const Header = ({ currentPage, onNavigate }: Props) => {
         <div className="header__mobile-menu">
           <button className="header__mobile-link" onClick={() => nav('home')}>Início</button>
           <button className="header__mobile-link" onClick={() => nav('buscar')}>Buscar</button>
+          <button className="header__mobile-link" onClick={() => nav('sequenciamento')}>Sequenciamento</button>
           <button className="header__mobile-link" onClick={() => nav('time')}>Equipe</button>
           <button className="header__mobile-link" onClick={() => nav('fontes')}>Fonte de Dados</button>
           <button className="header__mobile-link" onClick={() => nav('contato')}>Contato</button>

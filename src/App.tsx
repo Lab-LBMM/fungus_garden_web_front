@@ -8,6 +8,7 @@ import {
   TeamPage,
   DataSourcesPage,
   ContactPage,
+  SequenciamentoPage, 
 } from './pages';
 
 /**
@@ -25,6 +26,7 @@ function App() {
     if (path.startsWith('/time')) return 'time';
     if (path.startsWith('/fontes')) return 'fontes';
     if (path.startsWith('/contato')) return 'contato';
+     if (path.startsWith('/sequenciamento')) return 'sequenciamento';
     return 'home';
   };
 
@@ -48,6 +50,9 @@ function App() {
       case 'contato':
         navigate('/contato');
         break;
+      case 'sequenciamento':
+        navigate('/sequenciamento');
+        break;
       default:
         navigate('/');
     }
@@ -64,6 +69,7 @@ function App() {
           <Route path="/time"          element={<TeamPage />} />
           <Route path="/fontes"        element={<DataSourcesPage />} />
           <Route path="/contato"       element={<ContactPage />} />
+          <Route path="/sequenciamento" element={<SequenciamentoPage />} />
         </Routes>
       </main>
       <Footer onNavigate={handleNavigate} />
