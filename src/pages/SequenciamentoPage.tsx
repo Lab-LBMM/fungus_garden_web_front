@@ -5,16 +5,12 @@ import {
   Database, 
   Search, 
   ExternalLink, 
-  Cpu, 
   BarChart3, 
-  Play, 
-  CheckCircle2, 
   ArrowRight, 
   FileText, 
   Sparkles, 
   Filter, 
   UploadCloud, 
-  Activity,
   Layers,
   Copy,
   Check,
@@ -71,7 +67,7 @@ const SequenciamentoPage = () => {
   const navigate = useNavigate();
   
   // Aba ativa
-  const [activeTab, setActiveTab] = useState<'seqruns' | 'tabela' | 'pipeline' | 'diretrizes'>('seqruns');
+  const [activeTab, setActiveTab] = useState<'seqruns' | 'tabela' | 'diretrizes'>('seqruns');
   
   // Estado de SEQ RUNs & ASVs
   const [selectedRunId, setSelectedRunId] = useState<string>(seqRunsData[0].id);
@@ -91,12 +87,6 @@ const SequenciamentoPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedType, setSelectedType] = useState<'todos' | 'Bacteria' | 'Fungo' | 'Formiga'>('todos');
   const [selectedPlatform, setSelectedPlatform] = useState<string>('todas');
-
-  // Estados do Simulador de Pipeline
-  const [simSelectedOrg, setSimSelectedOrg] = useState<number>(1);
-  const [isSimulating, setIsSimulating] = useState(false);
-  const [currentStep, setCurrentStep] = useState<number>(0);
-  const [simCompleted, setSimCompleted] = useState(false);
 
   // SEQ RUN selecionado atualmente
   const currentRun: SeqRun = seqRunsData.find(r => r.id === selectedRunId) || seqRunsData[0];
@@ -154,24 +144,6 @@ const SequenciamentoPage = () => {
     setCopiedFastaId(asv.id);
     setTimeout(() => setCopiedFastaId(null), 2000);
   };
-
-  const handleStartSimulation = () => {
-    setIsSimulating(true);
-    setSimCompleted(false);
-    setCurrentStep(1);
-
-    const stepDuration = 1200;
-    setTimeout(() => setCurrentStep(2), stepDuration);
-    setTimeout(() => setCurrentStep(3), stepDuration * 2);
-    setTimeout(() => setCurrentStep(4), stepDuration * 3);
-    setTimeout(() => {
-      setCurrentStep(4);
-      setSimCompleted(true);
-      setIsSimulating(false);
-    }, stepDuration * 4);
-  };
-
-  const targetSimOrg = sequencingData.find(o => o.id === simSelectedOrg) || sequencingData[0];
 
   const totalGenomes = sequencingData.length;
   const totalBasesMb = sequencingData.reduce((acc, curr) => acc + curr.genomeSize, 0).toFixed(1);
@@ -239,7 +211,7 @@ const SequenciamentoPage = () => {
 
       {/* Main Container */}
       <div className="seq-container">
-        {/* Navigation Tabs - Envelopadas sem scroll horizontal */}
+        {/* Navigation Tabs */}
         <div className="seq-tabs">
           <button 
             className={`seq-tab-btn ${activeTab === 'seqruns' ? 'seq-tab-btn--active' : ''}`}
@@ -258,14 +230,6 @@ const SequenciamentoPage = () => {
           </button>
 
           <button 
-            className={`seq-tab-btn ${activeTab === 'pipeline' ? 'seq-tab-btn--active' : ''}`}
-            onClick={() => setActiveTab('pipeline')}
-          >
-            <Cpu size={17} />
-            Simulador de Pipeline Bioinformático
-          </button>
-
-          <button 
             className={`seq-tab-btn ${activeTab === 'diretrizes' ? 'seq-tab-btn--active' : ''}`}
             onClick={() => setActiveTab('diretrizes')}
           >
@@ -274,7 +238,7 @@ const SequenciamentoPage = () => {
           </button>
         </div>
 
-        {/* TAB 1: SEQ RUNS & ASVS (DESIGN FULL-WIDTH SEM SCROLL HORIZONTAL) */}
+        {/* TAB 1: SEQ RUNS & ASVS */}
         {activeTab === 'seqruns' && (
           <div className="seq-card">
             <div className="seq-card__header">
@@ -282,12 +246,12 @@ const SequenciamentoPage = () => {
                 <Layers className="seq-card__icon" size={22} />
                 <div>
                   <h2 className="seq-card__title">Explorador de SEQ RUNs & Abundância de ASVs</h2>
-                  <p className="seq-card__subtitle">Selecione uma corrida de sequenciamento para visualizar o relatório completo de abundância de ASVs sem rolagem lateral.</p>
+                  <p className="seq-card__subtitle">Selecione uma corrida de sequenciamento para visualizar o relatório completo de abundância de ASVs.</p>
                 </div>
               </div>
             </div>
 
-            {/* SELETOR SUPERIOR DE SEQ RUNS (GRID DE CARDS SELECIONÁVEIS) */}
+            {/* SELETOR SUPERIOR DE SEQ RUNS */}
             <div className="seq-selector-box">
               <div className="seq-selector-header">
                 <div className="seq-selector-title">
@@ -362,7 +326,7 @@ const SequenciamentoPage = () => {
                           <div className="seq-run-select-card__title">{run.title}</div>
                           
                           <div className="seq-run-select-card__meta">
-                            📍 {run.sampleSource}
+                            {run.sampleSource}
                           </div>
                         </div>
 
@@ -381,7 +345,7 @@ const SequenciamentoPage = () => {
               </div>
             </div>
 
-            {/* DASHBOARD DA SEQ RUN SELECIONADA (LARGURA TOTAL) */}
+            {/* DASHBOARD DA SEQ RUN SELECIONADA */}
             <div className="seq-run-full-dashboard">
               {/* Header da Corrida Selecionada */}
               <div className="seq-run-detail-header">
@@ -393,7 +357,7 @@ const SequenciamentoPage = () => {
                     <h3 className="seq-run-detail-title" style={{ marginTop: '0.4rem' }}>{currentRun.title}</h3>
                     <p className="seq-run-detail-sub">{currentRun.description}</p>
                     <div style={{ marginTop: '0.5rem', fontSize: '0.825rem', color: '#e8f5ee' }}>
-                      📍 <strong>Origem da Amostra:</strong> {currentRun.sampleSource} | 🔬 <strong>Ambiente:</strong> {currentRun.environment} | 📅 <strong>Data:</strong> {currentRun.date}
+                      <strong>Origem da Amostra:</strong> {currentRun.sampleSource} | <strong>Ambiente:</strong> {currentRun.environment} | <strong>Data:</strong> {currentRun.date}
                     </div>
                   </div>
                 </div>
@@ -506,7 +470,7 @@ const SequenciamentoPage = () => {
                 </div>
               </div>
 
-              {/* Lista Responsiva de Cards de ASVs (LARGURA TOTAL SEM SCROLL LATERAL) */}
+              {/* Lista Responsiva de Cards de ASVs */}
               <div className="asv-cards-list">
                 {filteredAsvs.length > 0 ? (
                   filteredAsvs.map((asv) => (
@@ -737,165 +701,7 @@ const SequenciamentoPage = () => {
           </div>
         )}
 
-        {/* TAB 3: SIMULADOR DE PIPELINE DE BIOINFORMÁTICA */}
-        {activeTab === 'pipeline' && (
-          <div className="seq-card">
-            <div className="seq-card__header">
-              <div className="seq-card__title-group">
-                <Cpu className="seq-card__icon" size={22} />
-                <div>
-                  <h2 className="seq-card__title">Simulador do Pipeline de Sequenciamento & Montagem LBMM</h2>
-                  <p className="seq-card__subtitle">Simule as etapas computacionais executadas no cluster bioinformático para processamento de reads e anotação.</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="seq-sim-grid">
-              <div className="seq-sim-sidebar">
-                <div className="seq-sim-select-group">
-                  <label className="seq-sim-label">Selecione o Organismo para Montagem:</label>
-                  <select 
-                    className="seq-sim-select"
-                    value={simSelectedOrg}
-                    onChange={(e) => {
-                      setSimSelectedOrg(Number(e.target.value));
-                      setCurrentStep(0);
-                      setSimCompleted(false);
-                    }}
-                    disabled={isSimulating}
-                  >
-                    {sequencingData.map((o) => (
-                      <option key={o.id} value={o.id}>
-                        {o.name} ({o.type})
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div style={{ background: '#ffffff', padding: '0.9rem', borderRadius: '0.5rem', border: '1px solid var(--gray-200)', marginBottom: '1rem' }}>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase' }}>Metadados da Amostra</div>
-                  <div style={{ fontWeight: 700, marginTop: '0.2rem', color: 'var(--text-primary)' }}>{targetSimOrg.name}</div>
-                  <div style={{ fontSize: '0.825rem', color: 'var(--text-secondary)', marginTop: '0.35rem' }}>
-                    • Genoma Estimado: <strong>{targetSimOrg.genomeSize} Mb</strong><br />
-                    • Plataforma: <strong>{targetSimOrg.platform}</strong><br />
-                    • Profundidade: <strong>{targetSimOrg.coverage}</strong>
-                  </div>
-                </div>
-
-                <button 
-                  className="seq-sim-start-btn"
-                  onClick={handleStartSimulation}
-                  disabled={isSimulating}
-                >
-                  {isSimulating ? (
-                    <>
-                      <Activity size={16} className="animate-spin" />
-                      Executando Pipeline...
-                    </>
-                  ) : (
-                    <>
-                      <Play size={16} />
-                      Iniciar Processamento
-                    </>
-                  )}
-                </button>
-              </div>
-
-              <div>
-                <div className="seq-pipeline-steps">
-                  <div className={`seq-step-card ${currentStep === 1 ? 'seq-step-card--active' : currentStep > 1 ? 'seq-step-card--completed' : ''}`}>
-                    <div className="seq-step-num">
-                      {currentStep > 1 ? <CheckCircle2 size={16} /> : '1'}
-                    </div>
-                    <div className="seq-step-info">
-                      <div className="seq-step-title">Controle de Qualidade (QC) & Trimming de Reads</div>
-                      <div className="seq-step-desc">Filtro Phred (Q &gt; 30) via FastQC e remoção de adaptadores de sequenciamento via Trimmomatic.</div>
-                      {currentStep === 1 && (
-                        <div className="seq-step-bar">
-                          <div className="seq-step-progress" style={{ width: '65%' }} />
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className={`seq-step-card ${currentStep === 2 ? 'seq-step-card--active' : currentStep > 2 ? 'seq-step-card--completed' : ''}`}>
-                    <div className="seq-step-num">
-                      {currentStep > 2 ? <CheckCircle2 size={16} /> : '2'}
-                    </div>
-                    <div className="seq-step-info">
-                      <div className="seq-step-title">Montagem Híbrida / De Novo de Contigs</div>
-                      <div className="seq-step-desc">Reconstrução do genoma unindo reads curtas e longas usando SPAdes e Flye Assembler.</div>
-                      {currentStep === 2 && (
-                        <div className="seq-step-bar">
-                          <div className="seq-step-progress" style={{ width: '80%' }} />
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className={`seq-step-card ${currentStep === 3 ? 'seq-step-card--active' : currentStep > 3 ? 'seq-step-card--completed' : ''}`}>
-                    <div className="seq-step-num">
-                      {currentStep > 3 ? <CheckCircle2 size={16} /> : '3'}
-                    </div>
-                    <div className="seq-step-info">
-                      <div className="seq-step-title">Scaffolding & Avaliação de Integridade (QUAST & BUSCO)</div>
-                      <div className="seq-step-desc">Mapeamento de N50, cálculo do tamanho final e checagem de orthólogos de cópia única (BUSCO completeness).</div>
-                      {currentStep === 3 && (
-                        <div className="seq-step-bar">
-                          <div className="seq-step-progress" style={{ width: '90%' }} />
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className={`seq-step-card ${currentStep === 4 ? 'seq-step-card--active' : simCompleted ? 'seq-step-card--completed' : ''}`}>
-                    <div className="seq-step-num">
-                      {simCompleted ? <CheckCircle2 size={16} /> : '4'}
-                    </div>
-                    <div className="seq-step-info">
-                      <div className="seq-step-title">Anotação Genômica & Identificação de ORFs</div>
-                      <div className="seq-step-desc">Predição funcional de genes codificadores de proteínas via Prokka e anotação InterPro.</div>
-                      {currentStep === 4 && !simCompleted && (
-                        <div className="seq-step-bar">
-                          <div className="seq-step-progress" style={{ width: '95%' }} />
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-
-                {simCompleted && (
-                  <div className="seq-results-box">
-                    <div className="seq-results-title">
-                      <CheckCircle2 size={18} />
-                      Pipeline Concluído com Sucesso! Relatório de Montagem:
-                    </div>
-                    <div className="seq-results-grid">
-                      <div className="seq-res-item">
-                        <div className="seq-res-lbl">Tamanho Montado</div>
-                        <div className="seq-res-val">{targetSimOrg.genomeSize} Mb</div>
-                      </div>
-                      <div className="seq-res-item">
-                        <div className="seq-res-lbl">N50 Contigs</div>
-                        <div className="seq-res-val">2.4 Mb</div>
-                      </div>
-                      <div className="seq-res-item">
-                        <div className="seq-res-lbl">BUSCO Complete</div>
-                        <div className="seq-res-val">98.6%</div>
-                      </div>
-                      <div className="seq-res-item">
-                        <div className="seq-res-lbl">ORFs Anotadas</div>
-                        <div className="seq-res-val">{targetSimOrg.geneCount.toLocaleString('pt-BR')}</div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* TAB 4: DIRETRIZES DE SUBMISSÃO */}
+        {/* TAB 3: DIRETRIZES DE SUBMISSÃO */}
         {activeTab === 'diretrizes' && (
           <div className="seq-card">
             <div className="seq-card__header">
