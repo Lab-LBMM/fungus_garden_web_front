@@ -222,6 +222,17 @@ const SequenciamentoPage = () => {
           </button>
 
           <button 
+            className="seq-tab-btn"
+            style={{ background: 'linear-gradient(135deg, var(--green-light), #ffffff)', color: 'var(--green-dark)', fontWeight: 700, border: '1.5px solid var(--green-muted)' }}
+            onClick={() => navigate('/comparar-seqruns')}
+            title="Abrir Matriz Bidimensional de Comparação de SEQ RUNs com Mapa de Calor"
+          >
+            <BarChart3 size={17} style={{ color: 'var(--green-primary)' }} />
+            Comparar SEQ RUNs (Heatmap 2D)
+            <ArrowRight size={14} style={{ marginLeft: '2px' }} />
+          </button>
+
+          <button 
             className={`seq-tab-btn ${activeTab === 'tabela' ? 'seq-tab-btn--active' : ''}`}
             onClick={() => setActiveTab('tabela')}
           >
@@ -249,6 +260,16 @@ const SequenciamentoPage = () => {
                   <p className="seq-card__subtitle">Selecione uma corrida de sequenciamento para visualizar o relatório completo de abundância de ASVs.</p>
                 </div>
               </div>
+
+              <button
+                className="seq-action-btn"
+                style={{ background: 'var(--green-primary)', color: '#ffffff', padding: '0.55rem 1rem', fontSize: '0.825rem', fontWeight: 600 }}
+                onClick={() => navigate('/comparar-seqruns')}
+              >
+                <BarChart3 size={15} />
+                Comparar Todas as Corridas (Matriz Heatmap)
+                <ArrowRight size={14} />
+              </button>
             </div>
 
             {/* SELETOR SUPERIOR DE SEQ RUNS */}

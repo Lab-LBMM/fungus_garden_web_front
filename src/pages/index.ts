@@ -5,4 +5,5 @@ export { default as TeamPage } from './TeamPage';
 export { default as DataSourcesPage } from './DataSourcesPage';
 export { default as ContactPage } from './ContactPage';
 export { default as SequenciamentoPage } from './SequenciamentoPage';
+export { default as CompareSeqRunsPage } from './CompareSeqRunsPage';
 

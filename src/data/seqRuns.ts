@@ -407,5 +407,252 @@ export const seqRunsData: SeqRun[] = [
         description: 'Endosimbionte móvel espiralado persistente em populações de formigas silvestres.'
       }
     ]
+  },
+  {
+    id: 'SEQRUN-2024-16S-05',
+    title: 'Amplicon 16S V4 - Câmara de Descarte/Lixeira de Atta sexdens',
+    date: '18/06/2024',
+    targetRegion: '16S V4',
+    platform: 'Illumina MiSeq',
+    sampleSource: 'Atta sexdens (Formiga-cortadeira) - Câmara de Lixo Orgânico',
+    environment: 'Material Foliar em Decomposição e Cadáveres de Operárias',
+    totalReads: 142300,
+    totalAsvs: 24,
+    shannonIndex: 2.85,
+    chao1Index: 28.0,
+    description: 'Sequenciamento do microbioma bacteriano da câmara de descarte (lixeira) para investigar a dinâmica de decomposição e bactérias potencialmente patogênicas suprimidas pela colônia.',
+    asvs: [
+      {
+        id: 'ASV_16S_005',
+        sequence: 'TACGGAGGGAACGAGCGTTAATCGGAATTACTGGGCGTAAAGCGCACGCAGGCGGTTTGTTAAGTCAGATGTGAAATCCCCGGGCTCAACCTGGGAACTGCATCTGATACTGGCAAGCTTGAGTCTCGTAGAGGGGGGTAGAATTCCAGGTGTAGCGGTGAAATGCGTAGAGATCTGGAGGAATACCGGTGGCGAAGGCGGCCCCCTGGACGAAGACTGACGCTCAGGTGCGAAAGCGTGGGGAGCAAACAGG',
+        length: 253,
+        taxonomy: 'k__Bacteria; p__Pseudomonadota; c__Gammaproteobacteria; o__Enterobacterales; f__Enterobacteriaceae; g__Escherichia; s__Escherichia_coli',
+        organismName: 'Escherichia coli',
+        type: 'Bacteria',
+        count: 44397,
+        relativeAbundance: 31.20,
+        confidence: 100.0,
+        organismId: 1,
+        description: 'Transiente entérico Gram-negativo predominante em material orgânico senescente.'
+      },
+      {
+        id: 'ASV_16S_006',
+        sequence: 'TACGTAGGTGGCAAGCGTTATCCGGAATTATTGGGCGTAAAGCGCGCGCAGGCGGTTTCTTAAGTCTGATGTGAAAGCCCACGGCTCAACCGTGGAGGGTCATTGGAAACTGGGGAACTTGAGTACAGAAGAGGAGAGTGGAATTCCATGTGTAGCGGTGAAATGCGTAGATATATGGAGGAACACCAGTGGCGAAGGCGACTCTCTGGACTGTAACTGACGCTGAGGCTCGAAAGCGTGGGGAGCAAACAGG',
+        length: 253,
+        taxonomy: 'k__Bacteria; p__Bacillota; c__Bacilli; o__Bacillales; f__Bacillaceae; g__Bacillus; s__Bacillus_subtilis',
+        organismName: 'Bacillus subtilis',
+        type: 'Bacteria',
+        count: 34294,
+        relativeAbundance: 24.10,
+        confidence: 99.1,
+        organismId: 3,
+        description: 'Bactéria degradadora de celulose e celobiose ativa nas câmaras de rejeitos.'
+      },
+      {
+        id: 'ASV_16S_002',
+        sequence: 'TACGTAGGGTCCAGCGTTATCCGGATTTATTGGGCGTAAAGCGAGCGCAGGCGGTCTTTTAAGTCTGATGTGAAAGCCCACGGCTCAACCGTGGAGGGTCATTGGAAACTGGAAGACTTGAGTACAGAAGAGGAGAGTGGAATTCCATGTGTAGCGGTGAAATGCGTAGATATATGGAGGAACACCAGTGGCGAAGGCGACTCTCTGGACTGTAACTGACGCTGAGGCTCGAAAGCGTGGGGAGCAAACAGG',
+        length: 254,
+        taxonomy: 'k__Bacteria; p__Actinomycetota; c__Actinomycetes; o__Streptomycetales; f__Streptomycetaceae; g__Streptomyces; s__Streptomyces_albidoflavus',
+        organismName: 'Streptomyces albidoflavus',
+        type: 'Bacteria',
+        count: 26325,
+        relativeAbundance: 18.50,
+        confidence: 99.4,
+        description: 'Simbionte produtor de antibióticos com alta atividade na supressão de mofos na lixeira.'
+      },
+      {
+        id: 'ASV_16S_008',
+        sequence: 'TACGTAGGTGGCAAGCGTTATCCGGAATTATTGGGCGTAAAGCGCGCGCAGGCGGTTTCTTAAGTCTGATGTGAAAGCCCACGGCTCAACCGTGGAGGGTCATTGGAAACTGGGGAACTTGAGTACAGAAGAGGAGAGTGGAATTCCATGTGTAGCGGTGAAATGCGTAGATATATGGAGGAACACCAGTGGCGAAGGCGACTCTCTGGACTGTAACTGACGCTGAGGCTCGAAAGCGTGGGGAGCAAACAGG',
+        length: 253,
+        taxonomy: 'k__Bacteria; p__Bacillota; c__Bacilli; o__Bacillales; f__Staphylococcaceae; g__Staphylococcus; s__Staphylococcus_aureus',
+        organismName: 'Staphylococcus aureus',
+        type: 'Bacteria',
+        count: 17076,
+        relativeAbundance: 12.00,
+        confidence: 99.6,
+        organismId: 2,
+        description: 'Bactéria oportunista de ambiente acumulada na lixeira.'
+      },
+      {
+        id: 'ASV_16S_009',
+        sequence: 'TACGTAGGGTCCAGCGTTATCCGGATTTATTGGGCGTAAAGCGAGCGCAGGCGGTTTGATAAGTCTGAAGTTAAAGGCTGTGGCTCAACCATAGTACGCTTTGGAAACTGTCAAACTTGAGTGCAGAAGAGGAGAGTGGAATTCCATGTGTAGCGGTGAAATGCGTAGATATATGGAGGAACACCAGTGGCGAAGGCGACTCTCTGGACTGTAACTGACGCTGAGGCTCGAAAGCGTGGGGAGCAAACAGG',
+        length: 252,
+        taxonomy: 'k__Bacteria; p__Pseudomonadota; c__Gammaproteobacteria; o__Pseudomonadales; f__Pseudomonadaceae; g__Pseudomonas; s__Pseudomonas_aeruginosa',
+        organismName: 'Pseudomonas aeruginosa',
+        type: 'Bacteria',
+        count: 14230,
+        relativeAbundance: 10.00,
+        confidence: 98.4,
+        description: 'Bacilo Gram-negativo saprófito decompositor.'
+      },
+      {
+        id: 'ASV_16S_001',
+        sequence: 'TACGGRAGGTCCAGCGTTATCCGGATTTATTGGGCGTAAAGCGAGCGCAGGCGGTTTGATAAGTCTGAAGTTAAAGGCTGTGGCTCAACCATAGTACGCTTTGGAAACTGTCAAACTTGAGTGCAGAAGAGGAGAGTGGAATTCCATGTGTAGCGGTGAAATGCGTAGATATATGGAGGAACACCAGTGGCGAAGGCGACTCTCTGGACTGTAACTGACGCTGAGGCTCGAAAGCGTGGGGAGCAAACAGG',
+        length: 253,
+        taxonomy: 'k__Bacteria; p__Actinomycetota; c__Actinomycetes; o__Propionibacteriales; f__Nocardiaceae; g__Pseudonocardia; s__Pseudonocardia_formicarum',
+        organismName: 'Pseudonocardia formicarum',
+        type: 'Bacteria',
+        count: 5978,
+        relativeAbundance: 4.20,
+        confidence: 99.8,
+        description: 'Traços de Pseudonocardia carregados passivamente pelas operárias do lixo.'
+      }
+    ]
+  },
+  {
+    id: 'SEQRUN-2024-ITS-06',
+    title: 'Amplicon ITS2 - Topo Ativo do Jardim Fúngico de Atta cephalotes',
+    date: '10/07/2024',
+    targetRegion: 'ITS2',
+    platform: 'Illumina NovaSeq 6000',
+    sampleSource: 'Atta cephalotes - Amostra de Jardim Fúngico Vivo (Camada Superior)',
+    environment: 'Zona de Crescimento Micelial Ativo e Fornecimento Contínuo de Folhas',
+    totalReads: 285000,
+    totalAsvs: 22,
+    shannonIndex: 2.10,
+    chao1Index: 25.0,
+    description: 'Sequenciamento ITS2 para monitorar a densidade do cultivar Leucocoprinus e a prevalência de parasitas na zona mais produtiva da colônia.',
+    asvs: [
+      {
+        id: 'ASV_ITS_001',
+        sequence: 'AACTTTCAACAACGGATCTCTTGGCTCTCGCATCGATGAAGAACGCAGCGAAATGCGATAAGTAATGTGAATTGCAGAATTCAGTGAATCATCGAATCTTTGAACGCACATTGCGCCCCTTGGTATTCCATAGGGCATGCCTGTTCGAGCGTCATTTACACCCTCAAGCTCTGCTTGGTGTTGGGTGTTTGTCTCGCCTTTGCGCGCAGACTCGCCTTAAAATAATTGGCAGCCGGCCTACTGGTCTTCGGAGCGCAGCACATTTTT',
+        length: 312,
+        taxonomy: 'k__Fungi; p__Basidiomycota; c__Agaricomycetes; o__Agaricales; f__Agaricaceae; g__Leucocoprinus; s__Leucocoprinus_gongylophorus',
+        organismName: 'Leucocoprinus gongylophorus',
+        type: 'Fungo',
+        count: 206625,
+        relativeAbundance: 72.50,
+        confidence: 99.9,
+        description: 'Cultivar fúngico dominante produzindo matriz micelial densa e gongilídios.'
+      },
+      {
+        id: 'ASV_ITS_003',
+        sequence: 'AACTTTCAACAACGGATCTCTTGGCTCTCGCATCGATGAAGAACGCAGCGAAATGCGATAAGTAATGTGAATTGCAGAATTCAGTGAATCATCGAATCTTTGAACGCACATTGCGCCCCTTGGTATTCCATAGGGCATGCCTGTTCGAGCGTCATTTCACCCTCAAGCTCTGCTTGGTGTTGGGTGTTTGTCTCGCCTTTGCGCGCAGACTCGCCTTAAAATAATTGGCAGCCGGCCTACTGGTCTTCGGAGCGCAGCACATTT',
+        length: 295,
+        taxonomy: 'k__Fungi; p__Ascomycota; c__Sordariomycetes; o__Hypocreales; f__Hypocreaceae; g__Trichoderma; s__Trichoderma_harzianum',
+        organismName: 'Trichoderma harzianum',
+        type: 'Fungo',
+        count: 35340,
+        relativeAbundance: 12.40,
+        confidence: 98.7,
+        description: 'Fungo filamentoso competidor saprófito.'
+      },
+      {
+        id: 'ASV_ITS_005',
+        sequence: 'AACTTTCAACAACGGATCTCTTGGCTCTCGCATCGATGAAGAACGCAGCGAAATGCGATAAGTAATGTGAATTGCAGAATTCAGTGAATCATCGAATCTTTGAACGCACATTGCGCCCCTTGGTATTCCATAGGGCATGCCTGTTCGAGCGTCATTTACACCCTCAAGCTCTGCTTGGTGTTGGGTGTTTGTCTCGCCTTTGCGCGCAGACTCGCCTTAAAATAATTGGCAGCCGGCCTACTGGTCTTCGGAGCGCAGC',
+        length: 302,
+        taxonomy: 'k__Fungi; p__Ascomycota; c__Eurotiomycetes; o__Eurotiales; f__Aspergillaceae; g__Aspergillus; s__Aspergillus_niger',
+        organismName: 'Aspergillus niger',
+        type: 'Fungo',
+        count: 20520,
+        relativeAbundance: 7.20,
+        confidence: 99.2,
+        description: 'Saprófita oportunista mantido em baixa carga pelas secreções metapleurais.'
+      },
+      {
+        id: 'ASV_ITS_007',
+        sequence: 'AACTTTCAACAACGGATCTCTTGGCTCTCGCATCGATGAAGAACGCAGCGAAATGCGATAAGTAATGTGAATTGCAGAATTCAGTGAATCATCGAATCTTTGAACGCACATTGCGCCCCTTGGTATTCCATAGGGCATGCCTGTTCGAGCGTCATTTAAACCCTCAAGCTCTGCTTGGTGTTGGGTGTTTGTCTCGCCTTTGCGCGCAGACTCGCCTTAAAATAATTGGCAGCCGGCCTACTGGTCTTCGGAGCGCAG',
+        length: 298,
+        taxonomy: 'k__Fungi; p__Mucoromycota; c__Mucoromycetes; o__Mucorales; f__Syncephalastraceae; g__Syncephalastrum; s__Syncephalastrum_racemosum',
+        organismName: 'Syncephalastrum racemosum',
+        type: 'Fungo',
+        count: 13680,
+        relativeAbundance: 4.80,
+        confidence: 97.4,
+        description: 'Zigomiceto filamentoso introduzido por fragmentos de substrato orgânico.'
+      },
+      {
+        id: 'ASV_ITS_002',
+        sequence: 'AACTTTCAACAACGGATCTCTTGGCTCTCGCATCGATGAAGAACGCAGCGAAATGCGATAAGTAATGTGAATTGCAGAATTCAGTGAATCATCGAATCTTTGAACGCACATTGCGCCCCCTGGTATTCCGGAGGGCATGCCTGTTCGAGCGTCATTTCAACCCTCAAGCCCCGGGGGTTTGGTGTTGGGGATCGGCTCTGCCTTCGCAGGCAGACTCGCCTTAAAATCAGTGGCGGCCGGCCTACTGGTCCTCGGAGCGCAGCACATTT',
+        length: 308,
+        taxonomy: 'k__Fungi; p__Ascomycota; c__Sordariomycetes; o__Hypocreales; f__Hypocreaceae; g__Escovopsis; s__Escovopsis_weberi',
+        organismName: 'Escovopsis weberi',
+        type: 'Fungo',
+        count: 8835,
+        relativeAbundance: 3.10,
+        confidence: 99.5,
+        description: 'Micro-parasita especializado detectado sob rigoroso controle das formigas operárias.'
+      }
+    ]
+  },
+  {
+    id: 'SEQRUN-2023-16S-07',
+    title: 'Amplicon 16S V3-V4 - Microbioma de Trachymyrmex fuscus (Agricultura Basal)',
+    date: '02/09/2023',
+    targetRegion: '16S V3-V4',
+    platform: 'Illumina MiSeq',
+    sampleSource: 'Trachymyrmex fuscus - Ninho Silvestre de Cerrado Brasileiro (Itirapina/SP)',
+    environment: 'Ninho Pequeno de Transição Evolutiva com Substrato de Flores e Fezes de Insetos',
+    totalReads: 165800,
+    totalAsvs: 31,
+    shannonIndex: 3.42,
+    chao1Index: 38.0,
+    description: 'Sequenciamento 16S de espécie de formiga atínea não-cortadeira (agricultura basal) para elucidar a evolução da simbiose com actinobactérias produtoras de antifúngicos.',
+    asvs: [
+      {
+        id: 'ASV_16S_002',
+        sequence: 'TACGTAGGGTCCAGCGTTATCCGGATTTATTGGGCGTAAAGCGAGCGCAGGCGGTCTTTTAAGTCTGATGTGAAAGCCCACGGCTCAACCGTGGAGGGTCATTGGAAACTGGAAGACTTGAGTACAGAAGAGGAGAGTGGAATTCCATGTGTAGCGGTGAAATGCGTAGATATATGGAGGAACACCAGTGGCGAAGGCGACTCTCTGGACTGTAACTGACGCTGAGGCTCGAAAGCGTGGGGAGCAAACAGG',
+        length: 254,
+        taxonomy: 'k__Bacteria; p__Actinomycetota; c__Actinomycetes; o__Streptomycetales; f__Streptomycetaceae; g__Streptomyces; s__Streptomyces_albidoflavus',
+        organismName: 'Streptomyces albidoflavus',
+        type: 'Bacteria',
+        count: 53885,
+        relativeAbundance: 32.50,
+        confidence: 99.4,
+        description: 'Actinobactéria predominante na proteção do jardim nas espécies atíneas basais.'
+      },
+      {
+        id: 'ASV_16S_001',
+        sequence: 'TACGGRAGGTCCAGCGTTATCCGGATTTATTGGGCGTAAAGCGAGCGCAGGCGGTTTGATAAGTCTGAAGTTAAAGGCTGTGGCTCAACCATAGTACGCTTTGGAAACTGTCAAACTTGAGTGCAGAAGAGGAGAGTGGAATTCCATGTGTAGCGGTGAAATGCGTAGATATATGGAGGAACACCAGTGGCGAAGGCGACTCTCTGGACTGTAACTGACGCTGAGGCTCGAAAGCGTGGGGAGCAAACAGG',
+        length: 253,
+        taxonomy: 'k__Bacteria; p__Actinomycetota; c__Actinomycetes; o__Propionibacteriales; f__Nocardiaceae; g__Pseudonocardia; s__Pseudonocardia_formicarum',
+        organismName: 'Pseudonocardia formicarum',
+        type: 'Bacteria',
+        count: 46424,
+        relativeAbundance: 28.00,
+        confidence: 99.8,
+        description: 'Simbionte ancestral isolado da cutícula das operárias de Trachymyrmex.'
+      },
+      {
+        id: 'ASV_16S_010',
+        sequence: 'TACGTAGGGTCAAGCGTTATCCGGATTTATTGGGCGTAAAGCGAGCGCAGGCGGTTTGATAAGTCTGAAGTTAAAGGCTGTGGCTCAACCATAGTACGCTTTGGAAACTGTCAAACTTGAGTGCAGAAGAGGAGAGTGGAATTCCATGTGTAGCGGTGAAATGCGTAGATATATGGAGGAACACCAGTGGCGAAGGCGACTCTCTGGACTGTAACTGACGCTGAGGCTCGAAAGCGTGGGGAGCAAACAGG',
+        length: 254,
+        taxonomy: 'k__Bacteria; p__Actinomycetota; c__Actinomycetes; o__Pseudonocardiales; f__Pseudonocardiaceae; g__Amycolatopsis; s__Amycolatopsis_orientalis',
+        organismName: 'Amycolatopsis orientalis',
+        type: 'Bacteria',
+        count: 33160,
+        relativeAbundance: 20.00,
+        confidence: 98.1,
+        description: 'Actinomiceto produtor de glicopeptídeos antimicrobianos presente em espécies basais.'
+      },
+      {
+        id: 'ASV_16S_007',
+        sequence: 'TACGTAGGGTCCAGCGTTATCCGGATTTATTGGGCGTAAAGCGAGCGCAGGCGGTTTGATAAGTCTGAAGTTAAAGGCTGTGGCTCAACCATAGTACGCTTTGGAAACTGTCAAACTTGAGTGCAGAAGAGGAGAGTGGAATTCCATGTGTAGCGGTGAAATGCGTAGATATATGGAGGAACACCAGTGGCGAAGGCGACTCTCTGGACTGTAACTGACGCTGAGGCTCGAAAGCGTGGGGAGCAAACAGG',
+        length: 254,
+        taxonomy: 'k__Bacteria; p__Pseudomonadota; c__Betaproteobacteria; o__Burkholderiales; f__Burkholderiaceae; g__Burkholderia; s__Burkholderia_fungorum',
+        organismName: 'Burkholderia fungorum',
+        type: 'Bacteria',
+        count: 32331,
+        relativeAbundance: 19.50,
+        confidence: 97.8,
+        description: 'Bactéria degradadora de celulose adaptada a resíduos de flores e sementes.'
+      }
+    ]
   }
 ];
+
+// Helper: Obter lista consolidada de todas as ASVs únicas presentes nos dados
+export const getAllUniqueASVs = (runs: SeqRun[] = seqRunsData): ASVItem[] => {
+  const asvMap = new Map<string, ASVItem>();
+  
+  runs.forEach(run => {
+    run.asvs.forEach(asv => {
+      if (!asvMap.has(asv.id)) {
+        asvMap.set(asv.id, asv);
+      }
+    });
+  });
+
+  return Array.from(asvMap.values());
+};
+

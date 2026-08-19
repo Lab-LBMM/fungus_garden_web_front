@@ -8,7 +8,8 @@ import {
   TeamPage,
   DataSourcesPage,
   ContactPage,
-  SequenciamentoPage, 
+  SequenciamentoPage,
+  CompareSeqRunsPage,
 } from './pages';
 
 /**
@@ -23,10 +24,11 @@ function App() {
   const getPageKey = (path: string) => {
     if (path === '/') return 'home';
     if (path.startsWith('/buscar') || path.startsWith('/organismo')) return 'buscar';
+    if (path.startsWith('/comparar')) return 'comparar';
+    if (path.startsWith('/sequenciamento')) return 'sequenciamento';
     if (path.startsWith('/time')) return 'time';
     if (path.startsWith('/fontes')) return 'fontes';
     if (path.startsWith('/contato')) return 'contato';
-     if (path.startsWith('/sequenciamento')) return 'sequenciamento';
     return 'home';
   };
 
@@ -41,6 +43,12 @@ function App() {
       case 'buscar':
         navigate('/buscar');
         break;
+      case 'comparar':
+        navigate('/comparar-seqruns');
+        break;
+      case 'sequenciamento':
+        navigate('/sequenciamento');
+        break;
       case 'time':
         navigate('/time');
         break;
@@ -49,9 +57,6 @@ function App() {
         break;
       case 'contato':
         navigate('/contato');
-        break;
-      case 'sequenciamento':
-        navigate('/sequenciamento');
         break;
       default:
         navigate('/');
@@ -63,13 +68,15 @@ function App() {
       <Header currentPage={currentPage} onNavigate={handleNavigate} />
       <main>
         <Routes>
-          <Route path="/"              element={<HomePage />} />
-          <Route path="/buscar"        element={<SearchPage onViewDetail={(id) => navigate(`/organismo/${id}`)} />} />
-          <Route path="/organismo/:id" element={<DetailPage />} />
-          <Route path="/time"          element={<TeamPage />} />
-          <Route path="/fontes"        element={<DataSourcesPage />} />
-          <Route path="/contato"       element={<ContactPage />} />
-          <Route path="/sequenciamento" element={<SequenciamentoPage />} />
+          <Route path="/"                   element={<HomePage />} />
+          <Route path="/buscar"             element={<SearchPage onViewDetail={(id) => navigate(`/organismo/${id}`)} />} />
+          <Route path="/organismo/:id"      element={<DetailPage />} />
+          <Route path="/comparar-seqruns"   element={<CompareSeqRunsPage />} />
+          <Route path="/comparar"           element={<CompareSeqRunsPage />} />
+          <Route path="/sequenciamento"     element={<SequenciamentoPage />} />
+          <Route path="/time"               element={<TeamPage />} />
+          <Route path="/fontes"             element={<DataSourcesPage />} />
+          <Route path="/contato"            element={<ContactPage />} />
         </Routes>
       </main>
       <Footer onNavigate={handleNavigate} />
