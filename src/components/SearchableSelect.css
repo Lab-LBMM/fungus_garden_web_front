@@ -1,0 +1,312 @@
+.searchable-select-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  width: 100%;
+  min-width: 220px;
+}
+
+.searchable-select__label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #374151;
+  letter-spacing: 0.02em;
+}
+
+.searchable-select__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.6rem 0.85rem;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  min-height: 40px;
+}
+
+.searchable-select__trigger:hover {
+  border-color: #10b981;
+  background-color: #f9fafb;
+}
+
+.searchable-select__trigger--open {
+  border-color: #059669;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+  background-color: #ffffff;
+}
+
+.searchable-select__trigger--has-value {
+  color: #111827;
+  font-weight: 500;
+}
+
+.searchable-select__trigger-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.searchable-select__icon {
+  display: flex;
+  align-items: center;
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+.searchable-select__value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.searchable-select__trigger-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.searchable-select__clear-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.15rem;
+  border: none;
+  background: transparent;
+  color: #9ca3af;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.searchable-select__clear-btn:hover {
+  color: #ef4444;
+  background-color: #fee2e2;
+}
+
+.searchable-select__chevron {
+  color: #6b7280;
+  transition: transform 0.2s ease;
+}
+
+.searchable-select__chevron--rotated {
+  transform: rotate(180deg);
+}
+
+.searchable-select__dropdown {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.6rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  animation: searchableSelectFadeIn 0.15s ease-out;
+  min-width: 250px;
+}
+
+@keyframes searchableSelectFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.searchable-select__search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: #f3f4f6;
+  border-radius: 0.4rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #e5e7eb;
+}
+
+.searchable-select__search-box:focus-within {
+  border-color: #10b981;
+  background-color: #ffffff;
+}
+
+.searchable-select__search-icon {
+  color: #9ca3af;
+  margin-right: 0.35rem;
+  flex-shrink: 0;
+}
+
+.searchable-select__search-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: 0.825rem;
+  color: #1f2937;
+  outline: none;
+  padding: 0.25rem 0;
+}
+
+.searchable-select__search-clear {
+  border: none;
+  background: transparent;
+  color: #9ca3af;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0.1rem;
+}
+
+.searchable-select__search-clear:hover {
+  color: #4b5563;
+}
+
+.searchable-select__multi-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.2rem 0.35rem;
+  border-bottom: 1px solid #f3f4f6;
+  gap: 0.5rem;
+}
+
+.searchable-select__action-btn {
+  border: none;
+  background: transparent;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #059669;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.15s;
+}
+
+.searchable-select__action-btn:hover {
+  background-color: #ecfdf5;
+}
+
+.searchable-select__action-btn--danger {
+  color: #dc2626;
+}
+
+.searchable-select__action-btn--danger:hover {
+  background-color: #fef2f2;
+}
+
+.searchable-select__options-list {
+  max-height: 220px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.searchable-select__option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.45rem 0.6rem;
+  border: none;
+  background: transparent;
+  border-radius: 0.35rem;
+  font-size: 0.85rem;
+  color: #374151;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.12s;
+}
+
+.searchable-select__option:hover {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+
+.searchable-select__option--selected {
+  background-color: #ecfdf5;
+  color: #047857;
+  font-weight: 600;
+}
+
+.searchable-select__option-text {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.searchable-select__option-count {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-left: 0.5rem;
+}
+
+.searchable-select__check {
+  color: #059669;
+  margin-left: 0.5rem;
+  flex-shrink: 0;
+}
+
+.searchable-select__checkbox-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.6rem;
+  border-radius: 0.35rem;
+  font-size: 0.85rem;
+  color: #374151;
+  cursor: pointer;
+  transition: background-color 0.12s;
+  user-select: none;
+}
+
+.searchable-select__checkbox-option:hover {
+  background-color: #f3f4f6;
+}
+
+.searchable-select__checkbox-option--checked {
+  background-color: #ecfdf5;
+  color: #065f46;
+  font-weight: 500;
+}
+
+.searchable-select__checkbox-input {
+  display: none;
+}
+
+.searchable-select__checkbox-custom {
+  display: flex;
+  align-items: center;
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+
+.searchable-select__checkbox-option--checked .searchable-select__checkbox-custom {
+  color: #059669;
+}
+
+.searchable-select__empty {
+  padding: 0.8rem 0.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #9ca3af;
+  font-style: italic;
+}

@@ -1,0 +1,136 @@
+.hero {
+  position: relative;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 72px 24px;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1576086213369-97a306d36557?w=1400&q=80') center/cover no-repeat;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 50, 30, 0.88) 0%,
+    rgba(20, 94, 56, 0.78) 50%,
+    rgba(10, 35, 25, 0.82) 100%
+  );
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  width: 100%;
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 800;
+  color: white;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+
+.hero__subtitle {
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  color: rgba(255,255,255,0.78);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.hero__br {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .hero__br {
+    display: inline;
+  }
+}
+
+.hero__search {
+  display: flex;
+  gap: 10px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.hero__search-input-wrap {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.hero__search-icon {
+  position: absolute;
+  left: 14px;
+  color: var(--gray-400);
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.hero__search-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 14px 0 40px;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  background: rgba(255,255,255,0.95);
+  color: var(--text-primary);
+  outline: none;
+  transition: background var(--transition);
+}
+
+.hero__search-input:focus {
+  background: white;
+  box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.3);
+}
+
+.hero__search-input::placeholder {
+  color: var(--gray-400);
+}
+
+.hero__search-btn {
+  height: 44px;
+  padding: 0 22px;
+  background: var(--green-accent);
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.hero__search-btn:hover {
+  background: #22a355;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 56px 20px;
+    min-height: 360px;
+  }
+  .hero__search {
+    flex-direction: column;
+  }
+  .hero__search-btn {
+    width: 100%;
+  }
+}

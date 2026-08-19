@@ -1,0 +1,318 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--gray-200);
+  box-shadow: 0 1px 8px rgba(26, 42, 32, 0.06);
+}
+
+.header__inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--green-dark);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px 0;
+  text-align: left;
+  min-width: 0;
+  flex-shrink: 1;
+  transition: opacity var(--transition);
+}
+
+.header__logo:hover {
+  opacity: 0.82;
+}
+
+.header__logo-icon {
+  width: 34px;
+  height: 34px;
+  background: var(--green-primary);
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(26, 122, 74, 0.22);
+}
+
+.header__logo-text {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.25;
+  color: var(--green-dark);
+  letter-spacing: 0.01em;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1.2vw, 16px);
+  flex-shrink: 0;
+}
+
+.header__nav-link {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: 8px 6px;
+  position: relative;
+  white-space: nowrap;
+  transition: color var(--transition);
+}
+
+.header__nav-link:hover {
+  color: var(--green-primary);
+}
+
+.header__nav-link--active {
+  color: var(--green-primary);
+  font-weight: 600;
+}
+
+.header__nav-link--active::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 6px;
+  right: 6px;
+  height: 2px;
+  background: var(--green-primary);
+  border-radius: 2px;
+}
+
+.header__nav-btn {
+  background: var(--green-primary);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 7px;
+  margin-left: 4px;
+  white-space: nowrap;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.header__nav-btn:hover {
+  background: var(--green-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(20, 94, 56, 0.22);
+}
+
+.header__hamburger {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--green-dark);
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+
+.header__hamburger:hover,
+.header__hamburger--open {
+  background: var(--green-light);
+  color: var(--green-primary);
+}
+
+.header__backdrop {
+  position: fixed;
+  top: 62px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 30, 20, 0.35);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  z-index: 99;
+  animation: headerFadeIn 0.2s ease-out;
+}
+
+.header__mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border-bottom: 1px solid var(--gray-200);
+  box-shadow: 0 12px 32px rgba(26, 42, 32, 0.12);
+  padding: 12px 18px 20px;
+  z-index: 100;
+  max-height: calc(100vh - 65px);
+  overflow-y: auto;
+  animation: headerSlideDown 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.header__mobile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.header__mobile-link {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 11px 14px;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid transparent;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.header__mobile-link:hover {
+  background: var(--green-light);
+  color: var(--green-primary);
+}
+
+.header__mobile-link--active {
+  background: var(--green-light);
+  color: var(--green-primary);
+  font-weight: 600;
+  border-left-color: var(--green-primary);
+}
+
+.header__mobile-link--btn {
+  background: var(--green-primary);
+  color: #ffffff;
+  justify-content: center;
+  margin-top: 8px;
+  padding: 12px 16px;
+  font-weight: 600;
+  border-left: none;
+}
+
+.header__mobile-link--btn:hover {
+  background: var(--green-dark);
+  color: #ffffff;
+}
+
+@keyframes headerSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes headerFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Tablet & Intermediate Desktop screens */
+@media (max-width: 1120px) {
+  .header__inner {
+    padding: 0 18px;
+    gap: 12px;
+  }
+  .header__nav {
+    gap: 10px;
+  }
+  .header__nav-link {
+    font-size: 0.84rem;
+    padding: 6px 4px;
+  }
+  .header__nav-btn {
+    padding: 7px 12px;
+    font-size: 0.82rem;
+  }
+}
+
+/* Breakpoint to mobile/drawer menu */
+@media (max-width: 1024px) {
+  .header__nav {
+    display: none;
+  }
+  .header__hamburger {
+    display: flex;
+  }
+}
+
+/* Small screens / Tablets */
+@media (max-width: 640px) {
+  .header__inner {
+    height: 58px;
+    padding: 0 16px;
+  }
+  .header__logo {
+    gap: 8px;
+  }
+  .header__logo-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+  }
+  .header__logo-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+  .header__logo-text {
+    font-size: 0.85rem;
+    line-height: 1.2;
+  }
+  .header__backdrop {
+    top: 58px;
+  }
+}
+
+/* Ultra-small screens (e.g. <= 380px) */
+@media (max-width: 380px) {
+  .header__inner {
+    padding: 0 10px;
+    gap: 8px;
+  }
+  .header__logo-text {
+    font-size: 0.78rem;
+    line-height: 1.18;
+  }
+  .header__hamburger {
+    width: 38px;
+    height: 38px;
+  }
+}
