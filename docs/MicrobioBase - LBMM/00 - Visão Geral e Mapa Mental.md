@@ -38,11 +38,15 @@ mindmap
       ASVs e Índices Ecológicos
       Heatmap de Abundância
       Matriz de Similaridade
+    Casos de Uso e UX
+      Pesquisador / Bioinformata
+      Estudante / Visitante Geral
+      Diagrama Draw.io Nativo
     Operação e Dados
       Modelagem de Dados (Types)
       Integração API Backend
       Git Workflow & Equipe
-      Trello Roadmap
+      Trello & Notion Sync
 ```
 
 ### 📚 Notas Especializadas do Projeto:
@@ -51,6 +55,8 @@ mindmap
 3. [[03 - Módulo de Sequenciamento e Comparador de Seq Runs]]: Documentação detalhada da `CompareSeqRunsPage` e bioinformática.
 4. [[04 - Modelagem de Dados e Tipos TypeScript]]: Interfaces, esquemas de dados, mocks atuais e contrato da API futura.
 5. [[05 - Guia do Desenvolvedor e Git Workflow]]: Padrões de branch, higiene de commit, testes locais e sincronização.
+6. [[06 - Diagrama de Casos de Uso e Atores]]: Modelagem UML completa e referência ao arquivo nativo `Diagrama_Casos_de_Uso.drawio`.
+7. [[Notion_MicrobioBase_LBMM]]: Estrutura completa pronta para importação no workspace do Notion.
 
 ---
 
@@ -82,4 +88,5 @@ O foco de estudo primário reside no **sistema mutualista complexo das formigas 
 ## 📈 Resumo do Status Atual (Snapshot)
 - **Front-end SPA:** 100% navegável com 8 rotas operacionais.
 - **Destaque Atual:** Desenvolvimento do comparador matricial multiamostral de ASVs (`CompareSeqRunsPage.tsx`).
-- **Próximo Marco:** Transição dos mocks de dados locais (`src/data/`) para consumo de endpoints REST da API LBMM.
+- **Autoria do Git:** Padronizada com sucesso em `Kauã Henrique <kauaestudosprog@gmail.com>`.
+- **Arquitetura de Documentação:** Tríade sincronizada entre **Obsidian**, **GitHub** (`docs/`) e **Trello**.
