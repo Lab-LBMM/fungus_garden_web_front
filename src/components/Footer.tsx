@@ -31,6 +31,8 @@ const Footer = ({ onNavigate }: Props) => {
             <h4 className="footer__col-title">Navegação</h4>
             <button onClick={() => onNavigate('home')}>Início</button>
             <button onClick={() => onNavigate('buscar')}>Buscar Organismos</button>
+            <button onClick={() => onNavigate('comparar')}>Comparar SEQ RUNs (Heatmap)</button>
+            <button onClick={() => onNavigate('sequenciamento')}>Central de Sequenciamento</button>
             <button onClick={() => onNavigate('time')}>Equipe de Pesquisa</button>
             <button onClick={() => onNavigate('fontes')}>Fonte de Dados</button>
             <button onClick={() => onNavigate('contato')}>Contato</button>

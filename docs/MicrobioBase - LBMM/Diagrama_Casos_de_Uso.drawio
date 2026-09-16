@@ -1,0 +1,164 @@
+<mxfile host="app.diagrams.net" modified="2026-09-09T18:50:00.000Z" agent="Antigravity" version="21.0.0" type="device">
+  <diagram id="diagram_casos_de_uso_lbmm" name="Casos de Uso - MicrobioBase LBMM">
+    <mxGraphModel dx="1400" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1350" pageHeight="960" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Limite do Sistema (Boundary) -->
+        <mxCell id="boundary" value="Plataforma MicrobioBase (LBMM / UNESP)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8faf9;strokeColor=#1a7a4a;strokeWidth=2;fontStyle=1;fontSize=15;fontColor=#145e38;startSize=35;" vertex="1" parent="1">
+          <mxGeometry x="320" y="40" width="940" height="880" as="geometry" />
+        </mxCell>
+
+        <!-- ATOR 1: Estudante / Visitante Geral -->
+        <mxCell id="actor_estudante" value="&lt;b&gt;Estudante / Visitante Geral&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#e8f5ee;strokeColor=#1a7a4a;strokeWidth=1.5;fontColor=#145e38;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="90" y="240" width="60" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- ATOR 2: Pesquisador / Bioinformata -->
+        <mxCell id="actor_pesquisador" value="&lt;b&gt;Pesquisador / Bioinformata&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=1.5;fontColor=#0369a1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="90" y="580" width="60" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- CASOS DE USO PRIMÁRIOS (COLUNA ESQUERDA) -->
+        <!-- UC01: Buscar e Filtrar -->
+        <mxCell id="uc_buscar" value="Buscar e Filtrar Organismos" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e8f5ee;strokeColor=#1a7a4a;strokeWidth=1.5;fontColor=#145e38;fontSize=13;fontStyle=1;" vertex="1" parent="boundary">
+          <mxGeometry x="50" y="50" width="220" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- UC02: Filtro Simbiótico -->
+        <mxCell id="uc_simbiose" value="Filtrar por Agricultura e Simbiose" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e8f5ee;strokeColor=#1a7a4a;strokeWidth=1.5;fontColor=#145e38;fontSize=13;fontStyle=1;" vertex="1" parent="boundary">
+          <mxGeometry x="50" y="140" width="220" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- UC03: Consultar Ficha do Organismo -->
+        <mxCell id="uc_detalhes" value="Consultar Ficha do Organismo" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e8f5ee;strokeColor=#1a7a4a;strokeWidth=1.5;fontColor=#145e38;fontSize=13;fontStyle=1;" vertex="1" parent="boundary">
+          <mxGeometry x="50" y="230" width="220" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- UC04: Explorar Corridas -->
+        <mxCell id="uc_corridas" value="Explorar Corridas de Sequenciamento" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=1.5;fontColor=#0369a1;fontSize=13;fontStyle=1;" vertex="1" parent="boundary">
+          <mxGeometry x="50" y="340" width="230" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- UC05: Comparar Corridas -->
+        <mxCell id="uc_comparar" value="Comparar Múltiplas Corridas de Sequenciamento" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=1.5;fontColor=#0369a1;fontSize=13;fontStyle=1;" vertex="1" parent="boundary">
+          <mxGeometry x="50" y="460" width="240" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- UC06: Exportar Dados -->
+        <mxCell id="uc_exportar" value="Exportar Relatórios Científicos (CSV / FASTA)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=1.5;fontColor=#0369a1;fontSize=13;fontStyle=1;" vertex="1" parent="boundary">
+          <mxGeometry x="50" y="580" width="240" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- UC07: Fontes de Dados -->
+        <mxCell id="uc_fontes" value="Consultar Fontes de Dados e Referências" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#d97706;strokeWidth=1.5;fontColor=#92400e;fontSize=13;fontStyle=1;" vertex="1" parent="boundary">
+          <mxGeometry x="50" y="680" width="230" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- UC08: Equipe e Contato -->
+        <mxCell id="uc_equipe" value="Conhecer Equipe do LBMM e Enviar Mensagem" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#d97706;strokeWidth=1.5;fontColor=#92400e;fontSize=13;fontStyle=1;" vertex="1" parent="boundary">
+          <mxGeometry x="50" y="770" width="240" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- CASOS DE USO SECUNDÁRIOS / INCLUDES / EXTENDS (COLUNA DIREITA) -->
+        <!-- Sub UC: Perfil Genômico (Include UC03) -->
+        <mxCell id="uc_sub_gc" value="Visualizar Conteúdo GC/AT e Genes" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1;strokeDashed=1;fontColor=#334155;fontSize=12;" vertex="1" parent="boundary">
+          <mxGeometry x="460" y="190" width="220" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Sub UC: Taxonomia e GenBank (Include UC03) -->
+        <mxCell id="uc_sub_tax" value="Consultar Taxonomia e NCBI GenBank" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1;strokeDashed=1;fontColor=#334155;fontSize=12;" vertex="1" parent="boundary">
+          <mxGeometry x="460" y="270" width="220" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Sub UC: Heatmap (Include UC05) -->
+        <mxCell id="uc_sub_heatmap" value="Visualizar Heatmap Matricial de ASVs" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1;strokeDashed=1;fontColor=#334155;fontSize=12;" vertex="1" parent="boundary">
+          <mxGeometry x="460" y="390" width="230" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Sub UC: Similaridade (Extend UC05) -->
+        <mxCell id="uc_sub_sim" value="Calcular Similaridade (Jaccard / Bray-Curtis)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1;strokeDashed=1;fontColor=#334155;fontSize=12;" vertex="1" parent="boundary">
+          <mxGeometry x="460" y="470" width="240" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Sub UC: Modal FASTA (Extend UC05) -->
+        <mxCell id="uc_sub_fasta" value="Inspecionar Sequência e Taxonomia da ASV" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1;strokeDashed=1;fontColor=#334155;fontSize=12;" vertex="1" parent="boundary">
+          <mxGeometry x="460" y="560" width="240" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Sub UC: Diretrizes (Include UC04) -->
+        <mxCell id="uc_sub_diretrizes" value="Consultar Protocolos de Submissão de Amplicons" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=1;strokeDashed=1;fontColor=#334155;fontSize=12;" vertex="1" parent="boundary">
+          <mxGeometry x="460" y="650" width="250" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- LIGAÇÕES DOS ATORES AOS CASOS DE USO -->
+        <!-- Estudante ligações -->
+        <mxCell id="edge_e1" style="endArrow=none;html=1;strokeColor=#1a7a4a;strokeWidth=1.5;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor_estudante" target="uc_buscar">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_e2" style="endArrow=none;html=1;strokeColor=#1a7a4a;strokeWidth=1.5;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor_estudante" target="uc_simbiose">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_e3" style="endArrow=none;html=1;strokeColor=#1a7a4a;strokeWidth=1.5;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor_estudante" target="uc_detalhes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_e4" style="endArrow=none;html=1;strokeColor=#1a7a4a;strokeWidth=1.5;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor_estudante" target="uc_fontes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_e5" style="endArrow=none;html=1;strokeColor=#1a7a4a;strokeWidth=1.5;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor_estudante" target="uc_equipe">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Pesquisador ligações -->
+        <mxCell id="edge_p1" style="endArrow=none;html=1;strokeColor=#0284c7;strokeWidth=1.5;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor_pesquisador" target="uc_buscar">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_p2" style="endArrow=none;html=1;strokeColor=#0284c7;strokeWidth=1.5;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor_pesquisador" target="uc_detalhes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_p3" style="endArrow=none;html=1;strokeColor=#0284c7;strokeWidth=1.5;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor_pesquisador" target="uc_corridas">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_p4" style="endArrow=none;html=1;strokeColor=#0284c7;strokeWidth=1.5;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor_pesquisador" target="uc_comparar">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_p5" style="endArrow=none;html=1;strokeColor=#0284c7;strokeWidth=1.5;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor_pesquisador" target="uc_exportar">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- LIGAÇÕES <<include>> e <<extend>> -->
+        <!-- UC Detalhes -> GC/AT (include) -->
+        <mxCell id="inc_gc" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="endArrow=open;dashed=1;html=1;strokeColor=#64748b;strokeWidth=1.2;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="uc_detalhes" target="uc_sub_gc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- UC Detalhes -> Taxonomia (include) -->
+        <mxCell id="inc_tax" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="endArrow=open;dashed=1;html=1;strokeColor=#64748b;strokeWidth=1.2;exitX=1;exitY=0.7;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="uc_detalhes" target="uc_sub_tax">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- UC Comparar -> Heatmap (include) -->
+        <mxCell id="inc_heat" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="endArrow=open;dashed=1;html=1;strokeColor=#64748b;strokeWidth=1.2;exitX=1;exitY=0.2;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="uc_comparar" target="uc_sub_heatmap">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- UC Comparar -> Similaridade (extend) -->
+        <mxCell id="ext_sim" value="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" style="endArrow=open;dashed=1;html=1;strokeColor=#64748b;strokeWidth=1.2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="uc_sub_sim" target="uc_comparar">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- UC Comparar -> Modal FASTA (extend) -->
+        <mxCell id="ext_fasta" value="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" style="endArrow=open;dashed=1;html=1;strokeColor=#64748b;strokeWidth=1.2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.8;exitDx=0;exitDy=0;" edge="1" parent="boundary" source="uc_sub_fasta" target="uc_comparar">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- UC Corridas -> Diretrizes (include) -->
+        <mxCell id="inc_dir" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="endArrow=open;dashed=1;html=1;strokeColor=#64748b;strokeWidth=1.2;exitX=1;exitY=0.8;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="uc_corridas" target="uc_sub_diretrizes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
